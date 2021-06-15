@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Change this to your connection info.
+// Connection info.
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
@@ -38,7 +38,8 @@ if ($stmt = $con->prepare('SELECT id, password FROM nguoidung WHERE username = ?
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
-            echo 'Welcome ' . $_SESSION['name'] . '!';
+            header('Location: home.php');
+            
         } else {
             // Incorrect password
             echo 'Incorrect username and/or password!';
