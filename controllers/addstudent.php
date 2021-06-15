@@ -26,25 +26,35 @@ if (!isset($_SESSION['loggedin'])) {
     <form action="addstudent.php" method="POST">
         <div class="form-group">
           <label for="hoten">Họ và tên:</label>
-          <input type="text" class="form-control" placeholder="Điền họ tên" name="hoten">
+          <input type="text" class="form-control" placeholder="Điền họ tên" name="hoten" required>
         </div>
         <div class="form-group">
           <label for="gioitinh">Giới tính:</label> <br>
-          Nam: <input type="radio" name="gioitinh" value="nam">
-          Nữ: <input type="radio" name="gioitinh" value="nữ">
+          Nam: <input type="radio" name="gioitinh" value="nam" required>
+          Nữ: <input type="radio" name="gioitinh" value="nữ" required>
         </div>
         <div class="form-group">
           <label for="ngaysinh">Ngày sinh:</label>
-          <input type="date" class="form-control" name="ngaysinh">
+          <input type="date" class="form-control" name="ngaysinh" required>
         </div>
         <div class="form-group">
           <label for="diachi">Địa chỉ:</label>
-          <input type="text" class="form-control" placeholder="Điền địa chỉ" name="diachi">
+          <input type="text" class="form-control" placeholder="Điền địa chỉ" name="diachi" required>
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" class="form-control" placeholder="Điền email" name="email">
+          <input type="email" class="form-control" placeholder="Điền email" name="email" required>
         </div>
+
+        <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Khối
+        </button>
+        <div class="dropdown-menu">
+          <?php include'generatedropdown.php'?>
+        </div>
+        </div>
+        <br/>
         <button type="submit" class="btn btn-primary">Đăng kí</button>
       </form>
 </div>
@@ -52,17 +62,7 @@ if (!isset($_SESSION['loggedin'])) {
 </body>
 </html>
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "quanlyhocsinh";
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
+    include 'connectdb.php';
     $hoten = $_POST['hoten'];
     $gioitinh = $_POST['gioitinh'];
     $ngaysinh = $_POST['ngaysinh'];
@@ -73,7 +73,7 @@ if (!isset($_SESSION['loggedin'])) {
     VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email')";
     
     if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
+      echo "Tiếp nhận học viên thành công";
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
