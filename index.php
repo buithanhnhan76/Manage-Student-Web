@@ -1,12 +1,3 @@
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: ../index.html');
-	exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +13,7 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Quản Lý Học Sinh</a>
+    <a class="navbar-brand" href="index.html">Quản Lý Học Sinh</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,7 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Tiếp nhận học sinh <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="controllers/addstudent.php">Tiếp nhận học sinh <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#">Lập danh sách lớp</a>
