@@ -45,13 +45,12 @@ if (!isset($_SESSION['loggedin'])) {
           <label for="email">Email:</label>
           <input type="email" class="form-control" placeholder="Điền email" name="email" required>
         </div>
-
         <div class="dropdown">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Khối
+          Lớp
         </button>
         <div class="dropdown-menu">
-          <?php include'generatedropdown.php'?>
+          <?php include'generateclass.php'?>
         </div>
         </div>
         <br/>
@@ -68,9 +67,10 @@ if (!isset($_SESSION['loggedin'])) {
     $ngaysinh = $_POST['ngaysinh'];
     $diachi = $_POST['diachi'];
     $email = $_POST['email'];
+    $malop = $_POST['malop'];
 
-    $sql = "INSERT INTO HOCSINH
-    VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email')";
+    $sql = "INSERT INTO HOCSINH(hoten, gioitinh, ngaysinh, diachi, email, malop)
+    VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email', '$malop')";
     
     if ($conn->query($sql) === TRUE) {
       echo "Tiếp nhận học viên thành công";
