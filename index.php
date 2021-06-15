@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
           <a class="nav-link" href="controllers/addstudent.php">Tiếp nhận học sinh <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">Lập danh sách lớp</a>
+          <a class="nav-link" href="controllers/showclass.php">Danh sách lớp</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -61,6 +61,9 @@ if (!isset($_SESSION['loggedin'])) {
 </body>
 </html>
 <?php
+  // if form has submited then ...
+  if ( isset($_POST['hoten']))
+  {
     include 'connectdb.php';
     $hoten = $_POST['hoten'];
     $gioitinh = $_POST['gioitinh'];
@@ -79,5 +82,5 @@ if (!isset($_SESSION['loggedin'])) {
     }
     
     $conn->close();
-    ?>
+  }
 ?>

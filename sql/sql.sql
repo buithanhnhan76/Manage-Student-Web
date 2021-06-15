@@ -22,6 +22,7 @@ create table LOP(
 	siso int,
 	makhoi varchar(10)
 )
+
 insert into LOP values('10A1','Lop 10A1','40','10');
 insert into LOP values('10A2','Lop 10A2','39','10');
 insert into LOP values('10A3','Lop 10A3','37','10');
@@ -33,4 +34,7 @@ insert into LOP values('11A3','Lop 11A3','37','11');
 insert into LOP values('12A1','Lop 12A1','40','12');
 insert into LOP values('12A2','Lop 12A2','39','12');
 insert into LOP values('12A3','Lop 12A3','37','12');
+
+alter table hocsinh 
+add constraint hocsinh_lop foreign key(malop) references lop(malop)
 
