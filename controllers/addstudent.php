@@ -57,7 +57,7 @@ if (!isset($_SESSION['loggedin'])) {
         <button type="submit" class="btn btn-primary">Đăng kí</button>
       </form>
 </div>
-
+<footer class="text-center">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>
 <?php

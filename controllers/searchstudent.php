@@ -10,7 +10,6 @@
 <?php
   // if form has submited then ...
   include 'checkloginstatus.php';
-  include 'connectdb.php';
 
   if ( isset($_POST['searchstudent']))
   {
@@ -67,6 +66,7 @@
     </tbody>
     </table>
     </div>
+    <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     ";
     } else {
     echo "0 results";
