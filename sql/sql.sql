@@ -12,7 +12,7 @@ create table HOCSINH(
 	gioitinh varchar(5),
 	ngaysinh date,
 	diachi varchar(50),
-	email varchar(10),
+	email varchar(50),
 	malop varchar(10)
 )
 
