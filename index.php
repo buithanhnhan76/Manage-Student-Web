@@ -19,6 +19,8 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,6 +37,9 @@ if (!isset($_SESSION['loggedin'])) {
         <li class="nav-item ">
           <a class="nav-link" href="controllers/showclass.php">Danh sách lớp</a>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="controllers/getthescoreboard.php">Nhận bảng điểm môn</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Báo Cáo Tổng Kết
@@ -47,7 +52,7 @@ if (!isset($_SESSION['loggedin'])) {
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="controllers/logout.php">Đăng xuất<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="controllers/logout.php">Đăng xuất <i class="fas fa-sign-out-alt"></i></a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

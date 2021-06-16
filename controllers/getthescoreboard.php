@@ -16,15 +16,24 @@ include 'checkloginstatus.php';
 </head>
 <body>
   <div class="container mt-5">
-    <h2>Danh Sách Lớp</h2>
+    <h2>Danh Sách Bảng Điểm Môn Học Của Lớp</h2>
     <h3>Vui lòng chọn lớp có trong danh sách quản lý</h3>
-    <form action="showclass.php" method="POST">
+    <form action="getthescoreboard.php" method="POST">
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Các Lớp
             </button>
             <div class="dropdown-menu">
                 <?php include'generateclass.php'?>
+            </div>
+        </div>
+        <br>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Danh Sách Môn Học
+            </button>
+            <div class="dropdown-menu">
+                <?php include'generatesubject.php'?>
             </div>
         </div>
         <br>
@@ -40,23 +49,32 @@ include 'checkloginstatus.php';
   {
     include 'connectdb.php';
     $malop = $_POST['malop'];
+    $tenmonhoc =$_POST['tenmonhoc'];
 
-    $sql = "select hoten, gioitinh, ngaysinh, diachi, email from HOCSINH where malop = '$malop'";
+    $sql = "select hs.hoten, pd.diem15p, pd.diem1t, pd.diemcuoiky
+    from HOCSINH hs, LOP l, PHIEUDIEM pd, HOCKY hk, MONHOC mh
+    where hs.mahocsinh = pd.mahocsinh
+    and pd.mahocky = hk.mahocky
+    and hs.malop = l.malop
+    and mh.mamonhoc = pd.mamonhoc
+    and l.malop = '$malop'
+    and mh.tenmonhoc = '$tenmonhoc';
+    ";
     
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         echo "
+        <h3>Bảng điểm môn học</h3>
         <br>
         <table class='table table-bordered'>
         <thead>
         <tr>
             <th>Stt</th>
             <th>Họ tên</th>
-            <th>Giới tính</th>
-            <th>Ngày sinh</th>
-            <th>Địa chỉ</th>
-            <th>Email</th>
+            <th>Điểm 15 phút</th>
+            <th>Điểm 1 tiết</th>
+            <th>Điểm thi cuối học kỳ</th>
         </tr>
         </thead>
         <tbody>
@@ -68,10 +86,9 @@ include 'checkloginstatus.php';
         echo "<tr>";
         echo "<td>" .$stt ."</td>";
         echo "<td>" .$row['hoten'] ."</td>";
-        echo "<td>" .$row['gioitinh'] ."</td>";
-        echo "<td>" .$row['ngaysinh'] ."</td>";
-        echo "<td>" .$row['diachi'] ."</td>";
-        echo "<td>" .$row['email'] ."</td>";
+        echo "<td>" .$row['diem15p'] ."</td>";
+        echo "<td>" .$row['diem1t'] ."</td>";
+        echo "<td>" .$row['diemcuoiky'] ."</td>";
         echo "</tr>";
     }
     echo "
