@@ -16,7 +16,7 @@ include 'checkloginstatus.php';
 </head>
 <body>
   <div class="container mt-5">
-    <h2>Danh Sách Bảng Điểm Môn Học Của Lớp</h2>
+    <h2 >Danh Sách Bảng Điểm Môn Học Của Lớp</h2>
     <h3>Vui lòng chọn lớp có trong danh sách quản lý</h3>
     <form action="getthescoreboard.php" method="POST">
         <div class="dropdown">
@@ -37,6 +37,15 @@ include 'checkloginstatus.php';
             </div>
         </div>
         <br>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Danh Sách Học Kỳ
+            </button>
+            <div class="dropdown-menu">
+                <?php include'generateterm.php'?>
+            </div>
+        </div>
+        <br>
         <button type="submit" class="btn btn-primary">Xem</button>
     </form>
 </div>
@@ -50,6 +59,7 @@ include 'checkloginstatus.php';
     include 'connectdb.php';
     $malop = $_POST['malop'];
     $tenmonhoc =$_POST['tenmonhoc'];
+    $mahocky = $_POST['mahocky'];
 
     $sql = "select hs.hoten, pd.diem15p, pd.diem1t, pd.diemcuoiky
     from HOCSINH hs, LOP l, PHIEUDIEM pd, HOCKY hk, MONHOC mh
@@ -58,14 +68,16 @@ include 'checkloginstatus.php';
     and hs.malop = l.malop
     and mh.mamonhoc = pd.mamonhoc
     and l.malop = '$malop'
-    and mh.tenmonhoc = '$tenmonhoc';
+    and mh.tenmonhoc = '$tenmonhoc'
+    and hk.mahocky = '$mahocky';
     ";
     
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         echo "
-        <h3>Bảng điểm môn học</h3>
+        <div class='container'>
+        <h3 class='text-center'>Bảng điểm môn học</h3>
         <br>
         <table class='table table-bordered'>
         <thead>
@@ -94,6 +106,7 @@ include 'checkloginstatus.php';
     echo "
     </tbody>
     </table>
+    </div>
     ";
     } else {
     echo "0 results";

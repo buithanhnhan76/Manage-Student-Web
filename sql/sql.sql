@@ -78,15 +78,15 @@ create table MONHOC(
 	tenmonhoc varchar(20)
 )
 
-insert into MONHOC values('TOAN','Toán');
-insert into MONHOC values('LY','Lý');
-insert into MONHOC values('HOA','Hóa');
-insert into MONHOC values('SINH','Sinh');
-insert into MONHOC values('SU','Sử');
-insert into MONHOC values('DIA','Địa');
-insert into MONHOC values('VAN','Văn');
-insert into MONHOC values('DAODUC','Đạo Đức');
-insert into MONHOC values('THEDUC','Thể Dục');
+insert into MONHOC values('Toan','Toán');
+insert into MONHOC values('Ly','Lý');
+insert into MONHOC values('Hoa','Hóa');
+insert into MONHOC values('Sinh','Sinh');
+insert into MONHOC values('Su','Sử');
+insert into MONHOC values('Dia','Địa');
+insert into MONHOC values('Van','Văn');
+insert into MONHOC values('Daoduc','Đạo Đức');
+insert into MONHOC values('Theduc','Thể Dục');
 
 
 create table PHIEUDIEM(
@@ -106,12 +106,23 @@ add constraint FK3 foreign key(mahocky) references HOCKY(mahocky)
 
 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520000','8','7.5','6');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Hoa','hk1','19520000','6','7','3');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520000','2','7.8','4');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520001','7','10','10');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Hoa','hk1','19520001','10','10','10');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520001','9','8','10');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520002','1','1','10');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Hoa','hk1','19520002','10','1','10');
-insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520002','10','10','1');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520001','6','7','3');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520002','2','7.8','4');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520003','7','10','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520004','10','10','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520005','9','8','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520006','1','1','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520007','10','1','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520008','10','10','1'); 
+
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520000','8','7.5','6');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520001','9','7','3');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520002','6','7.8','4');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520003','4','10','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520004','1','10','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520005','9','10','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520006','1','7','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520007','10','5','10');
+insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520008','10','3','1');
+
 

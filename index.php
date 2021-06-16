@@ -58,11 +58,15 @@ if (!isset($_SESSION['loggedin'])) {
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Tên học sinh" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" action="controllers/searchstudent.php" method='POST'>
+        <input class="form-control mr-sm-2" type="text" placeholder="Tên học sinh" aria-label="Search" name="searchstudent">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tra cứu</button>
       </form>
     </div>
   </nav>
+  <div class="container-fluid">
+    <img src="images/graduation.jpg" alt="image of a class" class="img-fluid img-thumbnail">
+  </div>
+  <footer class="text-center">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>
