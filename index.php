@@ -21,10 +21,12 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="../css/style.css">;
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Quản Lý Học Sinh</a>
+    <a class="navbar-brand" href="index.php">Quản Lý Học Sinh</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,6 +69,6 @@ if (!isset($_SESSION['loggedin'])) {
   <div class="container-fluid">
     <img src="images/graduation.jpg" alt="image of a class" class="img-fluid img-thumbnail">
   </div>
-  <footer class="text-center">Copyright &copy 2021 University Of Information And Technology. </footer>
+  <footer class="text-center m-4">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>

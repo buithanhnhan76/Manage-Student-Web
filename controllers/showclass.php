@@ -16,8 +16,8 @@ include 'checkloginstatus.php';
 </head>
 <body>
   <div class="container mt-5">
-    <h2>Danh Sách Lớp</h2>
-    <h3>Vui lòng chọn lớp có trong danh sách quản lý</h3>
+    <h2 class="d-inline-block">Danh sách học sinh của các lớp</h2>
+    <a href="../index.php" class="float-right">Về màn hình chính</a>
     <form action="showclass.php" method="POST">
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -31,7 +31,6 @@ include 'checkloginstatus.php';
         <button type="submit" class="btn btn-primary">Xem</button>
     </form>
 </div>
-<footer class="text-center">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>
 <?php
@@ -77,6 +76,8 @@ include 'checkloginstatus.php';
     echo "
     </tbody>
     </table>
+    <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
+    <br>
     ";
     } else {
     echo "0 results";

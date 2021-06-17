@@ -16,8 +16,9 @@ include 'checkloginstatus.php';
 </head>
 <body>
   <div class="container mt-5">
-    <h3>Vui lòng chọn học kỳ</h3>
-    <form action="subjectreport.php" method="POST">
+    <h3 class="d-inline-block">Vui lòng chọn học kỳ</h3>
+    <a href="../index.php" class="float-right">Về màn hình chính</a>
+    <form action="termreport.php" method="POST">
         <br>
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -58,7 +59,7 @@ include 'checkloginstatus.php';
     if ($result->num_rows > 0) {
         echo "
         <div class='container'>
-        <h3 class='text-center'>Báo cáo tổng kết môn</h3>
+        <h3 class='text-center'>Báo cáo tổng kết học kỳ</h3>
         <br>
         <table class='table table-bordered'>
         <thead>
@@ -67,7 +68,7 @@ include 'checkloginstatus.php';
             <th>Lớp</th>
             <th>Sỉ số</th>
             <th>Số lượng đạt</th>
-            <th>Tỉ lệ</th>
+            <th>Tỉ lệ %</th>
         </tr>
         </thead>
         <tbody>

@@ -16,8 +16,9 @@ include 'checkloginstatus.php';
 </head>
 <body>
   <div class="container mt-5">
-    <h2 >Danh Sách Bảng Điểm Môn Học Của Lớp</h2>
-    <h3>Vui lòng chọn lớp có trong danh sách quản lý</h3>
+    <h2 class="d-inline-block">Xem bảng điểm môn học</h2> <br>
+    <a href="../index.php" class="float-right">Về màn hình chính</a>
+    <h2>Vui lòng chọn lớp, môn học và học kỳ</h2>
     <form action="getthescoreboard.php" method="POST">
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -49,7 +50,6 @@ include 'checkloginstatus.php';
         <button type="submit" class="btn btn-primary">Xem</button>
     </form>
 </div>
-<footer class="text-center">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>
 <?php
@@ -77,7 +77,7 @@ include 'checkloginstatus.php';
     if ($result->num_rows > 0) {
         echo "
         <div class='container'>
-        <h3 class='text-center'>Bảng điểm môn học</h3>
+        <h3 class='text-center'>Bảng điểm môn " .$tenmonhoc .", " .$mahocky .", lớp " .$malop ." </h3>
         <br>
         <table class='table table-bordered'>
         <thead>

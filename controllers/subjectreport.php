@@ -16,7 +16,8 @@ include 'checkloginstatus.php';
 </head>
 <body>
   <div class="container mt-5">
-    <h3>Vui lòng chọn môn học và học kỳ</h3>
+    <h2 class="d-inline-block">Vui lòng chọn môn học và học kỳ</h2>
+    <a href="../index.php" class="float-right">Về màn hình chính</a>
     <form action="subjectreport.php" method="POST">
         <br>
         <div class="dropdown">
@@ -60,6 +61,7 @@ include 'checkloginstatus.php';
     and	mh.tenmonhoc = '$tenmonhoc'
     and hk.mahocky = '$mahocky'
     and ((pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8) >= 5
+    group by l.malop
     ";
     
     $result = $conn->query($sql);
@@ -76,7 +78,7 @@ include 'checkloginstatus.php';
             <th>Lớp</th>
             <th>Sỉ số</th>
             <th>Số lượng đạt</th>
-            <th>Tỉ lệ</th>
+            <th>Tỉ lệ %</th>
         </tr>
         </thead>
         <tbody>

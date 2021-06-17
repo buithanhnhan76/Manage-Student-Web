@@ -9,23 +9,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">;
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="text-center">Vui lòng đăng nhập trước khi thực hiện tác vụ</h2>
-    <form action="controllers/authenticate.php" method="POST">
+    <h2 class="text-center border border-success rounded p-3">Chào Mừng Bạn Đến Với Website Quản Lý Học Sinh</h2>
+    <form action="controllers/authenticate.php" method="POST" class="border border-success rounded p-5 mt-3">
         <div class="form-group">
-          <label for="username">Tài khoản:</label>
-          <input type="text" class="form-control" placeholder="Enter username" name="username">
+          <label for="username"><i class="far fa-user"></i> Tài khoản :</label>
+          <input type="text" class="form-control" placeholder="Nhập tài khoản của bạn" name="username">
         </div>
         <div class="form-group">
-          <label for="password">Mật khẩu:</label>
-          <input type="password" class="form-control" placeholder="Enter password" name="password">
+          <label for="password"><i class="far fa-user"></i> Mật khẩu :</label>
+          <input type="password" class="form-control" placeholder="Nhập mật khẩu của bạn" name="password">
         </div>
         <button type="submit" class="btn btn-primary">Đăng nhập</button>
     </form>
-    <footer class="text-center">Copyright &copy 2021 University Of Information And Technology. </footer>
+    <footer class="text-center m-3">Copyright &copy 2021 University Of Information And Technology. </footer>
 </div>
 
 </body>
