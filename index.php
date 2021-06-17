@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin'])) {
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="controllers/subjectreport.php">Báo cáo kết quả môn học</a>
-            <a class="dropdown-item" href="#">Báo cáo kết quả tổng kết</a>
+            <a class="dropdown-item" href="controllers/termreport.php">Báo cáo kết quả tổng kết học kỳ</a>
             <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
