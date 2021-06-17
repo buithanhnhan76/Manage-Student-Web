@@ -8,7 +8,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo $row['malop'] ." <input type='radio' name='malop' value='" .$row['malop'] ."'/> <br/>";
+    echo "&nbsp&nbsp" .$row['malop'] ." <input type='radio' name='malop' value='" .$row['malop'] ."'/> <br/>";
   }
 } else {
   echo "0 results";

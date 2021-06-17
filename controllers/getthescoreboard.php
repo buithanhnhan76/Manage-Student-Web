@@ -12,13 +12,18 @@ include 'checkloginstatus.php';
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="../css/style.css">;
 </head>
 <body>
-  <div class="container mt-5">
-    <h2 class="d-inline-block">Xem bảng điểm môn học</h2> <br>
-    <a href="../index.php" class="float-right">Về màn hình chính</a>
-    <h2>Vui lòng chọn lớp, môn học và học kỳ</h2>
+  <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
+  <div class="container-fluid mt-5">
+    <h2 class="border border-success p-3 d-inline-block">Xem bảng điểm môn học</h2> <br>
+    <h2 class="border border-success p-3 d-inline-block my-3" >Vui lòng chọn lớp, môn học và học kỳ</h2>
     <form action="getthescoreboard.php" method="POST">
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -79,9 +84,9 @@ include 'checkloginstatus.php';
         <div class='container'>
         <h3 class='text-center'>Bảng điểm môn " .$tenmonhoc .", " .$mahocky .", lớp " .$malop ." </h3>
         <br>
-        <table class='table table-bordered'>
+        <table class='table table-bordered table-hover'>
         <thead>
-        <tr>
+        <tr class='table-secondary'>
             <th>Stt</th>
             <th>Họ tên</th>
             <th>Điểm 15 phút</th>
@@ -107,6 +112,8 @@ include 'checkloginstatus.php';
     </tbody>
     </table>
     </div>
+    <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
+    <br>
     ";
     } else {
     echo "0 results";

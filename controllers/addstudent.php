@@ -31,24 +31,24 @@ if (!isset($_SESSION['loggedin'])) {
     <form action="addstudent.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
           <label for="hoten">Họ và tên:</label>
-          <input type="text" class="form-control" placeholder="Điền họ tên" name="hoten" required>
+          <input type="text" class="form-control" placeholder="Điền họ tên học sinh" name="hoten" required>
         </div>
         <div class="form-group">
           <label for="gioitinh">Giới tính:</label> <br>
-          Nam: <input type="radio" name="gioitinh" value="nam" required>
-          Nữ: <input type="radio" name="gioitinh" value="nữ" required>
+          Nam <i class="fas fa-male"></i> : <input type="radio" name="gioitinh" value="nam" required>
+          Nữ <i class="fas fa-female"></i> :<input type="radio" name="gioitinh" value="nữ" required>
         </div>
         <div class="form-group">
           <label for="ngaysinh">Ngày sinh:</label>
           <input type="date" class="form-control" name="ngaysinh" required>
         </div>
         <div class="form-group">
-          <label for="diachi">Địa chỉ:</label>
-          <input type="text" class="form-control" placeholder="Điền địa chỉ" name="diachi" required>
+          <label for="diachi">Địa chỉ <i class="fas fa-address-card"></i> :</label>
+          <input type="text" class="form-control" placeholder="Điền địa chỉ học sinh" name="diachi" required>
         </div>
         <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" placeholder="Điền email" name="email" required>
+          <label for="email">Email <i class="fas fa-envelope"></i> :</label>
+          <input type="email" class="form-control" placeholder="Điền email học sinh" name="email" required>
         </div>
         <div class="dropdown">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -81,7 +81,7 @@ if (!isset($_SESSION['loggedin'])) {
     VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email', '$malop')";
     
     if ($conn->query($sql) === TRUE) {
-      echo "Tiếp nhận học viên thành công";
+      echo "<h4 class='m-3 p-3 d-inline-block alert alert-success'>Tiếp Nhận Học Viên Thành Công <i class='fas fa-check-square'></i> </h4>";
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }

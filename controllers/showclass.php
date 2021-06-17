@@ -13,11 +13,16 @@ include 'checkloginstatus.php';
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="../css/style.css">;
 </head>
 <body>
+  <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
   <div class="container mt-5">
-    <h2 class="d-inline-block">Danh sách học sinh của các lớp</h2>
-    <a href="../index.php" class="float-right">Về màn hình chính</a>
+    <h2 class="d-inline-block border border-success p-2 mb-4">Xuất Danh Sách Lớp</h2>
     <form action="showclass.php" method="POST">
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -28,7 +33,7 @@ include 'checkloginstatus.php';
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Xem</button>
+        <button type="submit" class="btn btn-primary">Xuất</button>
     </form>
 </div>
 </body>
@@ -47,9 +52,10 @@ include 'checkloginstatus.php';
     if ($result->num_rows > 0) {
         echo "
         <br>
-        <table class='table table-bordered'>
+        <div class='container'>
+        <table class='table table-bordered table-hover'>
         <thead>
-        <tr>
+        <tr class='table-secondary'>
             <th>Stt</th>
             <th>Họ tên</th>
             <th>Giới tính</th>
@@ -76,6 +82,7 @@ include 'checkloginstatus.php';
     echo "
     </tbody>
     </table>
+    </div>
     <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     <br>
     ";
