@@ -56,6 +56,9 @@ if (!isset($_SESSION['loggedin'])) {
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
         </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="controllers/regulation.php">QĐ</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="controllers/logout.php">Đăng xuất <i class="fas fa-sign-out-alt"></i></a>
         </li>

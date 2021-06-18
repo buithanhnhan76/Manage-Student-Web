@@ -283,4 +283,11 @@ insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520058','1','10','10'); 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520059','2','2','0');
 
-
+create table THAMSO(
+	mathamso varchar(10),
+	tenthamso varchar(20),
+	giatri int,
+	ghichu varchar(50)
+)
+insert into THAMSO values('TTT','Tuổi tối thiểu',15,'Tuổi tối thiểu của học sinh');
+insert into THAMSO values('TTĐ','Tuổi tối đa',20, 'Tuổi tối đa của học sinh');

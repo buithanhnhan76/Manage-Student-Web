@@ -1,25 +1,34 @@
 <html>
-    <head>
-         <!-- bootstrap -->
+
+<head>
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
-    </head>
-    <body>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="../css/style.css">;
+</head>
+
+<body>
     <br>
-    <div class="container">
-        <a href="../index.php" class="float-right">Về màn hình chính</a>
+    <div class="container-fluid">
+        <a href="../index.php" class="float-right border border-success p-2">Về màn hình chính</a>
     </div>
-  
-    </body>
+
+</body>
+
 </html>
 <?php
-  // if form has submited then ...
-  include 'checkloginstatus.php';
+// if form has submited then ...
+include 'checkloginstatus.php';
 
-  if ( isset($_POST['searchstudent']))
-  {
+if (isset($_POST['searchstudent'])) {
     include 'connectdb.php';
     $searchstudent = $_POST['searchstudent'];
 
@@ -44,11 +53,12 @@
         echo "
         <br>
         <div class='container'>
-        <h3 class='text-center'>Thông tin học viên</h3>
+        <h3 class='text-center border border-success d-inline-block p-2'>Thông tin học viên</h3>
         <br>
-        <table class='table table-bordered'>
+        <br>
+        <table class='table table-bordered table-hover'>
         <thead>
-        <tr>
+        <tr class='table-secondary'>
             <th>Stt</th>
             <th>Họ tên</th>
             <th>Lớp</th>
@@ -58,26 +68,26 @@
         </thead>
         <tbody>
         ";
-    // output data of each row
-    $stt = 0;
-    while($row = $result->fetch_assoc()) {
-        $stt++;
-        echo "<tr>";
-        echo "<td>" .$stt ."</td>";
-        echo "<td>" .$row['hoten'] ."</td>";
-        echo "<td>" .$row['malop'] ."</td>";
-        echo "<td>" .$row['TBHK1'] ."</td>";
-        echo "<td>" .$row['TBHK2'] ."</td>";
-        echo "</tr>";
-    }
-    echo "
+        // output data of each row
+        $stt = 0;
+        while ($row = $result->fetch_assoc()) {
+            $stt++;
+            echo "<tr>";
+            echo "<td>" . $stt . "</td>";
+            echo "<td>" . $row['hoten'] . "</td>";
+            echo "<td>" . $row['malop'] . "</td>";
+            echo "<td>" . $row['TBHK1'] . "</td>";
+            echo "<td>" . $row['TBHK2'] . "</td>";
+            echo "</tr>";
+        }
+        echo "
     </tbody>
     </table>
     </div>
     <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     ";
     } else {
-    echo "0 results";
+        echo "0 results";
     }
     $conn->close();
 }
