@@ -77,6 +77,14 @@ if (!isset($_SESSION['loggedin'])) {
     $email = $_POST['email'];
     $malop = $_POST['malop'];
 
+    // Check age of student [15,20]
+    $date = DateTime::createFromFormat("Y-m-d", $ngaysinh);
+    $age = (int)$date->format("Y");
+    if( $age < 2001 || $age > 2006 ){
+      echo "<h3 class='alert alert-success'>Tuổi Của Học Sinh Phải Từ 15 Đến 20</h3>";
+      die();
+    };
+
     $sql = "INSERT INTO HOCSINH(hoten, gioitinh, ngaysinh, diachi, email, malop)
     VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email', '$malop')";
     
