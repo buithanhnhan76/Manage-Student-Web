@@ -63,14 +63,18 @@ if (isset($_POST['tenmonhoc'])) {
     $mahocky = $_POST['mahocky'];
 
     $sql = "select l.malop, l.siso, COUNT(hs.mahocsinh) as 'Số lượng đạt', (COUNT(hs.mahocsinh)/l.siso) * 100  as 'Tỉ lệ %' 
-    from HOCSINH hs, PHIEUDIEM pd, HOCKY hk, LOP l, MONHOC mh 
+    from HOCSINH hs, PHIEUDIEM pd, HOCKY hk, LOP l, MONHOC mh
     where hs.mahocsinh = pd.mahocsinh
     and pd.mahocky = hk.mahocky
     and	hs.malop = l.malop
     and pd.mamonhoc = mh.mamonhoc
     and	mh.tenmonhoc = '$tenmonhoc'
     and hk.mahocky = '$mahocky'
-    and ((pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8) >= 5
+    and ((pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8) >= (
+        select giatri 
+        from THAMSO
+        where THAMSO.mathamso = 'ĐĐM'
+    )
     group by l.malop
     ";
 

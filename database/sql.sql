@@ -1,17 +1,27 @@
+drop database quanlyhocsinh1;
+create database quanlyhocsinh1;
+
+
+use quanlyhocsinh1;
+
 create table NGUOIDUNG(
 	id int AUTO_INCREMENT primary key,
  	username varchar(50),
     password varchar(50),
 	email varchar(50)
-)
-insert into NGUOIDUNG values(1,'buithanhnhan76','123456','nhanbui37@gmail.com')
+);
+
+
+insert into NGUOIDUNG values(1,'buithanhnhan76','123456','nhanbui37@gmail.com');
 
 create table LOP(
 	malop varchar(10) primary key,
 	tenlop varchar(10),
 	siso int,
 	makhoi varchar(10)
-)
+);
+
+
 insert into LOP values('10A1','Lop 10A1','30','10');
 insert into LOP values('10A2','Lop 10A2','10','10');
 insert into LOP values('10A3','Lop 10A3','37','10');
@@ -31,9 +41,11 @@ create table HOCSINH(
 	diachi varchar(50),
 	email varchar(50),
 	malop varchar(10)
-)
+);
+
+
 alter table hocsinh 
-add constraint hocsinh_lop foreign key(malop) references lop(malop)
+add constraint hocsinh_lop foreign key(malop) references lop(malop);
 -- 10A1 students
 insert into HOCSINH values('19520000','Trần Văn A','nam','2005/2/24','Hồ Chí Minh','a@gmail.com','10A1');
 insert into HOCSINH values('19520001','Trần Văn B','nam','2005/3/24','Thủ Đức','b@gmail.com','10A1');
@@ -108,6 +120,8 @@ create table HOCKY(
 	mahocky varchar(10) primary key,
 	tenhocky varchar(20)
 );
+
+
 insert into HOCKY values('hk1','Học Kỳ 1');
 insert into HOCKY values('hk2','Học Kỳ 2');
 
@@ -115,7 +129,9 @@ insert into HOCKY values('hk2','Học Kỳ 2');
 create table MONHOC(
 	mamonhoc varchar(20) primary key,
 	tenmonhoc varchar(20)
-)
+);
+
+
 insert into MONHOC values('Toan','Toán');
 insert into MONHOC values('Ly','Lý');
 insert into MONHOC values('Hoa','Hóa');
@@ -135,11 +151,13 @@ create table PHIEUDIEM(
 	diem15p float,
 	diem1t float,
 	diemcuoiky float
-)
+);
+
+
 alter table PHIEUDIEM
 add constraint FK1 foreign key(mahocsinh) references HOCSINH(mahocsinh),
 add constraint FK2 foreign key(mamonhoc) references MONHOC(mamonhoc),
-add constraint FK3 foreign key(mahocky) references HOCKY(mahocky)
+add constraint FK3 foreign key(mahocky) references HOCKY(mahocky);
 
 -- Data 10A1
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Toan','hk1','19520000','8','7.5','6');
@@ -283,11 +301,13 @@ insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520058','1','10','10'); 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520059','2','2','0');
 
+
 create table THAMSO(
 	mathamso varchar(10),
 	tenthamso varchar(20),
 	giatri int,
 	ghichu varchar(50)
-)
+);
 insert into THAMSO values('TTT','Tuổi tối thiểu',15,'Tuổi tối thiểu của học sinh');
 insert into THAMSO values('TTĐ','Tuổi tối đa',20, 'Tuổi tối đa của học sinh');
+insert into THAMSO values('ĐĐM','Điểm đạt môn',5, 'Điểm đạt môn của học sinh');

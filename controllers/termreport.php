@@ -57,7 +57,11 @@ if (isset($_POST['mahocky'])) {
     select distinct hs.mahocsinh
     from PHIEUDIEM pd
     where pd.mahocsinh = hs.mahocsinh
-    and (pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8 < 5
+    and (pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8 < (
+        select giatri
+        from THAMSO
+        where THAMSO.mathamso = 'ĐĐM'
+    )
     )
     group by l.malop
     ";
