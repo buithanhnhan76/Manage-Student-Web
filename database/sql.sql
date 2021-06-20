@@ -12,7 +12,7 @@ create table NGUOIDUNG(
 );
 
 
-insert into NGUOIDUNG values(1,'buithanhnhan76','123456','nhanbui37@gmail.com');
+insert into NGUOIDUNG values(1,'admin','admin','admin@gmail.com');
 
 create table LOP(
 	malop varchar(10) primary key,

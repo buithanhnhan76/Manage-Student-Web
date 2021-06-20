@@ -77,11 +77,11 @@ if ($result->num_rows > 0) {
         <br>
         <label for='giatri'>Giá Trị: </label>
         <br>
-        <input type='text' name='giatri'required/>
+        <input type='text' name='giatri' required/>
         <br>
         <label for='ghichu'>Ghi Chú: </label>
         <br>
-        <input type='text' name='ghichu'required/>
+        <input type='text' name='ghichu' required/>
         <br><br>
         <button type='submit' class='btn btn-primary'>Cập Nhật</button>
     </form>

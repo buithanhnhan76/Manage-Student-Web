@@ -1,5 +1,7 @@
+<?php 
+    include 'checkloginstatus.php';
+?>
 <html>
-
 <head>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,7 +28,6 @@
 </html>
 <?php
 // if form has submited then ...
-include 'checkloginstatus.php';
 
 if (isset($_POST['searchstudent'])) {
     include 'connectdb.php';
