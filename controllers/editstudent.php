@@ -28,7 +28,7 @@ if (!isset($_SESSION['loggedin'])) {
   <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
   <div class="container mt-5">
     <h2 class="d-inline-block border border-success rounded p-3 mb-4">Sửa thông tin học sinh</h2>
-    <form action="addstudent.php" method="POST" class="border border-success rounded p-4">
+    <form action="editstudent.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
           <label for="hoten">Mã học sinh cần sửa:</label>
           <input type="text" class="form-control" placeholder="Điền mã học sinh" name="mahocsinh" required>
