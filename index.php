@@ -1,12 +1,3 @@
-<?php
-// We need to use sessions, so you should always start sessions using the below code.
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: login.html');
-	exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +50,24 @@ if (!isset($_SESSION['loggedin'])) {
         <li class="nav-item ">
           <a class="nav-link" href="controllers/regulation.php">QĐ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="controllers/logout.php">Đăng xuất <i class="fas fa-sign-out-alt"></i></a>
-        </li>
+        <?php
+        session_start();
+        if(isset($_SESSION['loggedin'])){ 
+        echo "
+          <li class='nav-item'>
+            <a class='nav-link' href='controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i></a>
+          </li>
+      ";
+        }
+        else{
+          echo "
+            <li class='nav-item'>
+              <a class='nav-link' href='login.html'>Đăng nhập</a>
+            </li>
+        ";
+      
+        }
+        ?>
         <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li> -->
