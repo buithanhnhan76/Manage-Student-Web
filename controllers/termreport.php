@@ -55,8 +55,10 @@ if (isset($_POST['mahocky'])) {
     where l.malop = hs.malop
     and hs.mahocsinh not in (
     select distinct hs.mahocsinh
-    from PHIEUDIEM pd
+    from PHIEUDIEM pd, HOCKY hk
     where pd.mahocsinh = hs.mahocsinh
+    and pd.mahocky = hk.mahocky
+    and hk.mahocky = '$mahocky'
     and (pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8 < (
         select giatri
         from THAMSO
