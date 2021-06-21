@@ -35,6 +35,7 @@
             <a class="dropdown-item" href="controllers/addstudent.php">Tiếp nhận học sinh</a>
             <a class="dropdown-item" href="controllers/editstudent.php">Sửa thông tin học sinh</a>
             <a class="dropdown-item" href="controllers/deletestudent.php">Xóa học sinh</a>
+            <a class="dropdown-item" href="controllers/addpoints.php">Nhập điểm học sinh</a>
             <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
