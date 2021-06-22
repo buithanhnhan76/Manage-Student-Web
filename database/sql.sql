@@ -311,3 +311,13 @@ create table THAMSO(
 insert into THAMSO values('TTT','Tuổi tối thiểu',15,'Tuổi tối thiểu của học sinh');
 insert into THAMSO values('TTĐ','Tuổi tối đa',20, 'Tuổi tối đa của học sinh');
 insert into THAMSO values('ĐĐM','Điểm đạt môn',5, 'Điểm đạt môn của học sinh');
+insert into THAMSO values('SSTĐ','Sỉ số tối đa',40, 'Sỉ số tối đa của lớp');
+
+-- Trigger when add student
+create trigger HOCSINH_addstudent
+after insert
+on HOCSINH
+for EACH ROW
+update LOP
+set LOP.siso = LOP.siso + 1
+where LOP.malop = new.malop
