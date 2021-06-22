@@ -315,9 +315,14 @@ insert into THAMSO values('SSTĐ','Sỉ số tối đa',40, 'Sỉ số tối đa
 
 -- Trigger when add student
 create trigger HOCSINH_addstudent
-after insert
+before insert
 on HOCSINH
 for EACH ROW
 update LOP
 set LOP.siso = LOP.siso + 1
 where LOP.malop = new.malop
+and LOP.siso < (
+	select giatri
+	from THAMSO
+	where THAMSO.mathamso = 'SSTĐ'
+)

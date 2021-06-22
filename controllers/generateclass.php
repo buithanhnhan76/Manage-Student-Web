@@ -2,7 +2,15 @@
 
 include 'connectdb.php';
 
-$sql = "SELECT malop FROM lop";
+$sql = "
+select malop
+from LOP 
+where siso < (
+select giatri
+from THAMSO
+where mathamso = 'SSTĐ'
+)
+";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
