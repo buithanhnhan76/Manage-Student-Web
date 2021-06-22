@@ -30,7 +30,7 @@ if (!isset($_SESSION['loggedin'])) {
     <h2 class="d-inline-block border border-success rounded p-3 mb-4">Xóa học sinh</h2>
     <form action="deletestudent.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
-          <label for="hoten">Mã học sinh cần xóa:</label>
+          <label for="mahocsinh">Mã học sinh cần xóa:</label>
           <input type="text" class="form-control" placeholder="Điền mã học sinh" name="mahocsinh" required>
         </div>
         <button type="submit" class="btn btn-primary">Xóa</button>

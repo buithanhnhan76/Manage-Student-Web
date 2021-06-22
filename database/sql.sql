@@ -326,3 +326,12 @@ and LOP.siso < (
 	from THAMSO
 	where THAMSO.mathamso = 'SSTĐ'
 );
+
+-- trigger delete student
+create trigger HOCSINH_deletestudent
+after delete 
+on HOCSINH
+for EACH ROW
+update LOP
+set LOP.siso = LOP.siso - 1
+where LOP.malop = old.malop;
