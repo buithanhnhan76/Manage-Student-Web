@@ -1,9 +1,9 @@
-drop database quanlyhocsinh1;
-create database quanlyhocsinh1;
+drop database quanlyhocsinh;
+create database quanlyhocsinh;
 
+use quanlyhocsinh;
 
-use quanlyhocsinh1;
-
+-- TABLE NGUOIDUNG
 create table NGUOIDUNG(
 	id int AUTO_INCREMENT primary key,
  	username varchar(50),
@@ -11,9 +11,21 @@ create table NGUOIDUNG(
 	email varchar(50)
 );
 
-
 insert into NGUOIDUNG values(1,'admin','admin','admin@gmail.com');
 
+-- TABLE THAM SO
+create table THAMSO(
+	mathamso varchar(10), 
+	tenthamso varchar(20),
+	giatri int,
+	ghichu varchar(50)
+);
+insert into THAMSO values('TTT','Tuổi tối thiểu',15,'Tuổi tối thiểu của học sinh');
+insert into THAMSO values('TTĐ','Tuổi tối đa',20, 'Tuổi tối đa của học sinh');
+insert into THAMSO values('SSTĐ','Sỉ số tối đa',40, 'Sỉ số tối đa của lớp');
+insert into THAMSO values('ĐĐM','Điểm đạt môn',5, 'Điểm đạt môn của học sinh');
+
+-- TABLE LOP
 create table LOP(
 	malop varchar(10) primary key,
 	tenlop varchar(10),
@@ -21,18 +33,17 @@ create table LOP(
 	makhoi varchar(10)
 );
 
+insert into LOP values('10A1','Lop 10A1','0','10');
+insert into LOP values('10A2','Lop 10A2','0','10');
+insert into LOP values('10A3','Lop 10A3','0','10');
+insert into LOP values('10A4','Lop 10A4','0','10');
+insert into LOP values('11A1','Lop 11A1','0','11');
+insert into LOP values('11A2','Lop 11A2','0','11');
+insert into LOP values('11A3','Lop 11A3','0','11');
+insert into LOP values('12A1','Lop 12A1','0','12');
+insert into LOP values('12A2','Lop 12A2','0','12');
 
-insert into LOP values('10A1','Lop 10A1','30','10');
-insert into LOP values('10A2','Lop 10A2','10','10');
-insert into LOP values('10A3','Lop 10A3','37','10');
-insert into LOP values('10A4','Lop 10A4','37','10');
-insert into LOP values('11A1','Lop 11A1','10','11');
-insert into LOP values('11A2','Lop 11A2','39','11');
-insert into LOP values('11A3','Lop 11A3','37','11');
-insert into LOP values('12A1','Lop 12A1','10','12');
-insert into LOP values('12A2','Lop 12A2','39','12');
-
-
+-- TABLE HOCSINH
 create table HOCSINH(
 	mahocsinh int AUTO_INCREMENT primary key,
 	hoten varchar(50),
@@ -43,6 +54,19 @@ create table HOCSINH(
 	malop varchar(10)
 );
 
+-- Trigger when add student
+create trigger HOCSINH_addstudent
+before insert
+on HOCSINH
+for EACH ROW
+update LOP
+set LOP.siso = LOP.siso + 1
+where LOP.malop = new.malop
+and LOP.siso < (
+	select giatri
+	from THAMSO
+	where THAMSO.mathamso = 'SSTĐ'
+);
 
 alter table hocsinh 
 add constraint hocsinh_lop foreign key(malop) references lop(malop);
@@ -116,21 +140,11 @@ insert into HOCSINH values('19520057','Trần H','nữ','2005/11/24','Hà Nội'
 insert into HOCSINH values('19520058','Trần I','nam','2005/12/23','Huế','j@gmail.com','12A1');
 insert into HOCSINH values('19520059','Trần J','nam','2005/5/25','Hồ Chí Minh','a@gmail.com','12A1');
 
-create table HOCKY(
-	mahocky varchar(10) primary key,
-	tenhocky varchar(20)
-);
-
-
-insert into HOCKY values('hk1','Học Kỳ 1');
-insert into HOCKY values('hk2','Học Kỳ 2');
-
-
+-- TABLE MONHOC
 create table MONHOC(
 	mamonhoc varchar(20) primary key,
 	tenmonhoc varchar(20)
 );
-
 
 insert into MONHOC values('Toan','Toán');
 insert into MONHOC values('Ly','Lý');
@@ -142,7 +156,16 @@ insert into MONHOC values('Van','Văn');
 insert into MONHOC values('Daoduc','Đạo Đức');
 insert into MONHOC values('Theduc','Thể Dục');
 
+create table HOCKY(
+	mahocky varchar(10) primary key,
+	tenhocky varchar(20)
+);
 
+insert into HOCKY values('hk1','Học Kỳ 1');
+insert into HOCKY values('hk2','Học Kỳ 2');
+
+
+-- TABLE PHIEUDIEM 
 create table PHIEUDIEM(
 	maphieudiem int AUTO_INCREMENT primary key,
 	mamonhoc varchar(20),
@@ -301,28 +324,3 @@ insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520058','1','10','10'); 
 insert into PHIEUDIEM(mamonhoc, mahocky,mahocsinh, diem15p, diem1t, diemcuoiky) values ('Ly','hk1','19520059','2','2','0');
 
-
-create table THAMSO(
-	mathamso varchar(10),
-	tenthamso varchar(20),
-	giatri int,
-	ghichu varchar(50)
-);
-insert into THAMSO values('TTT','Tuổi tối thiểu',15,'Tuổi tối thiểu của học sinh');
-insert into THAMSO values('TTĐ','Tuổi tối đa',20, 'Tuổi tối đa của học sinh');
-insert into THAMSO values('ĐĐM','Điểm đạt môn',5, 'Điểm đạt môn của học sinh');
-insert into THAMSO values('SSTĐ','Sỉ số tối đa',40, 'Sỉ số tối đa của lớp');
-
--- Trigger when add student
-create trigger HOCSINH_addstudent
-before insert
-on HOCSINH
-for EACH ROW
-update LOP
-set LOP.siso = LOP.siso + 1
-where LOP.malop = new.malop
-and LOP.siso < (
-	select giatri
-	from THAMSO
-	where THAMSO.mathamso = 'SSTĐ'
-)
