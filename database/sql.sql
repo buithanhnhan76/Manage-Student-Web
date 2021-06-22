@@ -1,8 +1,8 @@
-drop database quanlyhocsinh1;
-create database quanlyhocsinh1;
+drop database quanlyhocsinh;
+create database quanlyhocsinh;
 
 
-use quanlyhocsinh1;
+use quanlyhocsinh;
 
 create table NGUOIDUNG(
 	id int AUTO_INCREMENT primary key,
@@ -325,4 +325,4 @@ and LOP.siso < (
 	select giatri
 	from THAMSO
 	where THAMSO.mathamso = 'SSTĐ'
-)
+);

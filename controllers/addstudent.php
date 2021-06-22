@@ -84,7 +84,7 @@ if (!isset($_SESSION['loggedin'])) {
       echo "<h3 class='alert alert-success'>Tuổi Của Học Sinh Phải Từ 15 Đến 20</h3>";
       die();
     };
-
+    
     $sql = "INSERT INTO HOCSINH(hoten, gioitinh, ngaysinh, diachi, email, malop)
     VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email', '$malop')";
     
