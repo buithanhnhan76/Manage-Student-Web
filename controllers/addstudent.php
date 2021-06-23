@@ -23,8 +23,11 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <!-- javascript -->
+    <script src="../js/javascript.js"></script>
 </head>
 <body>
+  <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
   <div class="container mt-5">
     <h2 class="d-inline-block border border-success rounded p-3 mb-4">Tiếp nhận học sinh</h2>
@@ -51,7 +54,7 @@ if (!isset($_SESSION['loggedin'])) {
           <input type="email" class="form-control" placeholder="Điền email học sinh" name="email" required>
         </div>
         <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
           Lớp
         </button>
         <div class="dropdown-menu">
@@ -79,9 +82,13 @@ if (!isset($_SESSION['loggedin'])) {
 
     // Check age of student [15,20]
     $date = DateTime::createFromFormat("Y-m-d", $ngaysinh);
-    $age = (int)$date->format("Y");
-    if( $age < 2001 || $age > 2006 ){
-      echo "<h3 class='alert alert-success'>Tuổi Của Học Sinh Phải Từ 15 Đến 20</h3>";
+    $yearOfBirth = (int)$date->format("Y");
+    $age = date("Y") - $yearOfBirth;
+    if( $age < 15 || $age > 20 ){
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Tuổi Học Sinh Từ 15 Đến 20";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
       die();
     };
 
@@ -89,7 +96,10 @@ if (!isset($_SESSION['loggedin'])) {
     VALUES ('$hoten', '$gioitinh', '$ngaysinh', '$diachi', '$email', '$malop')";
     
     if ($conn->query($sql) === TRUE) {
-      echo "<h4 class='m-3 p-3 d-inline-block alert alert-success'>Tiếp Nhận Học Viên Thành Công <i class='fas fa-check-square'></i> </h4>";
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Tiếp Nhận Học Viên Thành Công";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
