@@ -80,11 +80,32 @@ if (!isset($_SESSION['loggedin'])) {
     $email = $_POST['email'];
     $malop = $_POST['malop'];
 
+    //select Max and Min Age from database
+    $sql = "select giatri from THAMSO where mathamso = 'TTĐ';";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $ageMax = $row["giatri"];
+            echo $ageMax;
+          }
+    }
+
+    $sql = "select giatri from THAMSO where mathamso = 'TTT';";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $ageMin = $row["giatri"];
+            echo $ageMin;
+          }
+    }
+
     // Check age of student [15,20]
     $date = DateTime::createFromFormat("Y-m-d", $ngaysinh);
     $yearOfBirth = (int)$date->format("Y");
     $age = date("Y") - $yearOfBirth;
-    if( $age < 15 || $age > 20 ){
+    if( $age < $ageMin || $age > $ageMax ){
       echo '<script type="text/JavaScript">
               document.getElementById("div-inform").innerHTML += "Tuổi Học Sinh Từ 15 Đến 20";
               document.getElementById("div-inform").style.display = "block";
