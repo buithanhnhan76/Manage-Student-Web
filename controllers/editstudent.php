@@ -131,7 +131,7 @@ if (!isset($_SESSION['loggedin'])) {
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    
+
     $conn->close();
   }
 ?>

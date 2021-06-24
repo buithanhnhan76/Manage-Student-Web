@@ -26,6 +26,10 @@ include 'checkloginstatus.php';
     <div class="container mt-5">
         <h2 class="d-inline-block border border-success p-2 mb-4">Danh Sách Các Quy Định Hiện Có</h2>
     </div>
+    <div class="container mt-5" style="display: flex;">
+        <h3 class="text-center" style="flex: 1">BẢNG THAM SỐ</h3>    
+        <h3 class="text-center" style="flex: 1">BẢNG MÔN HỌC</h3>
+    </div>
 </body>
 
 </html>
@@ -35,17 +39,18 @@ include 'connectdb.php';
 $sql = "SELECT * FROM  THAMSO";
 $result = $conn->query($sql);
 
+// Table THAMSO
 if ($result->num_rows > 0) {
     echo "
     <br>
-    <div class='container'>
-    <table class='table table-bordered table-hover'>
+    <div class='container' style='display: flex'>
+    <table class='table table-bordered table-hover' style='width: 50%; margin-right:1%'>
     <thead>
     <tr class='table-secondary'>
-        <th>Mã Tham Số</th>
-        <th>Tên Tham Số</th>
-        <th>Giá Trị</th>
-        <th>Ghi Chú</th>
+        <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
+        <th style='vertical-align: middle; text-align: center;'>Tên Tham Số</th>
+        <th style='vertical-align: middle; text-align: center;'>Giá Trị</th>
+        <th style='vertical-align: middle; text-align: center;'>Ghi Chú</th>
     </tr>
     </thead>
     <tbody>
@@ -54,60 +59,109 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "
     <tr>
-        <td>" . $row['mathamso'] . "</td>
-        <td>" . $row['tenthamso'] . "</td>
-        <td>" . $row['giatri'] . "</td>
-        <td>" . $row['ghichu'] . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['mathamso'] . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['tenthamso'] . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['giatri'] . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['ghichu'] . "</td>
     </tr>
     ";
     }
     echo"
     </tbody>
     </table>
-    <br>
-    <h3>Chỉnh Sửa Quy Định </h3> 
-    <form action='regulation.php' method='POST'>
-        <label for='mathamso'>Mã Tham Số: </label>
-        <br>
-        <input type='text' name='mathamso' required/>
-        <br>
-        <label for='tenthamso'>Tên Tham Số: </label>
-        <br>
-        <input type='text' name='tenthamso'required/>
-        <br>
-        <label for='giatri'>Giá Trị: </label>
-        <br>
-        <input type='text' name='giatri' required/>
-        <br>
-        <label for='ghichu'>Ghi Chú: </label>
-        <br>
-        <input type='text' name='ghichu' required/>
-        <br><br>
-        <button type='submit' class='btn btn-primary'>Cập Nhật</button>
-    </form>
+    ";
+} else {
+    echo "0 results";
+}
+
+// Table MONHOC
+$sql = "SELECT * FROM  MONHOC";
+$result = $conn->query($sql);
+$stt = 0;
+
+if ($result->num_rows > 0) {
+    echo "
+    <table class='table table-bordered table-hover' style='width: 50%; margin-left:1%'>
+    <thead>
+    <tr class='table-secondary'>
+        <th style='vertical-align: middle; text-align: center;'>STT</th>
+        <th style='vertical-align: middle; text-align: center;'>Mã Môn Học</th>
+        <th style='vertical-align: middle; text-align: center;'>Tên Môn Học</th>
+    </tr>
+    </thead>
+    <tbody>
+    ";
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        $stt++;
+        echo "
+    <tr>
+        <td style='vertical-align: middle; text-align: center;'>" . $stt . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['mamonhoc'] . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['tenmonhoc'] . "</td>
+    </tr>
+    ";
+    }
+    echo"
+    </tbody>
+    </table>
     </div>
     ";
 } else {
     echo "0 results";
 }
-if(isset($_POST['mathamso'])){
-    include 'connectdb.php';
-    $mathamso = $_POST['mathamso'];
-    $tenthamso = $_POST['tenthamso'];
-    $giatri = $_POST['giatri'];
-    $ghichu = $_POST['ghichu'];
-
-    $sql = "update THAMSO
-    set mathamso = '$mathamso', tenthamso = '$tenthamso', giatri='$giatri', ghichu='$ghichu'
-    where mathamso = '$mathamso';
-    ";
-    if ($conn->query($sql) === TRUE) {
-      echo "<h4 class='m-3 p-3 d-inline-block alert alert-success'>Sửa Thành Công <i class='fas fa-check-square'></i> </h4><br>";
-      echo "<h4 class='m-3 p-3 d-inline-block alert alert-success'>Vui Lòng Reload Loại Website <i class='fas fa-check-square'></i> </h4>";
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    
-  }
 $conn->close();
+
+// Form edit regulation
+echo "
+    <div class='container mt-5' style='display: flex;'>
+        <h3 style='flex: 1; margin-right: 1%'>SỬA BẢNG THAM SỐ</h3>    
+        <h3 style='flex: 1; margin-left: 1%'>SỬA BẢNG MÔN HỌC</h3>
+    </div>
+    <br>
+    <div class='container' style='display: flex;'>
+        <form action='editregulation.php' method='POST' style='flex: 1; margin-right: 1%'>
+            <input type='hidden' name='action' value='editRegulation'>
+            <label for='mathamso' style='min-width: 92px'>Mã Tham Số: </label>
+            <input type='text' name='mathamso' required/>
+            <br>
+            <label for='giatri' style='min-width: 92px'>Giá Trị: </label>
+            <input type='text' name='giatri' required/>
+            <br>
+            <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+        </form>
+        <div class='editsubject' style='flex: 1; margin-left: 1%'>
+            <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='deleteSubject'>
+                <label style='min-width: 23%'>Xóa Môn Học: </label>
+                <input type='text' name='mamonhoc' style='width: 18%' placeholder='Mã môn học' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+            </form>
+            <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='increaseSubject'>
+                <label style='min-width: 23%'>Thêm Môn Học: </label>
+                <input type='text' name='tenmonhoc' style='width: 18%' placeholder='Tên môn học' required/>
+                <input type='text' name='mamonhoc' style='width: 18%' placeholder='Mã môn học' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px; text-align: right' value='Cập Nhật'>
+            </form>
+            <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='editSubject'>
+                <label style='min-width: 23%'>Sửa Tên Môn Học: </label>
+                <input type='text' name='mamonhoc' style='width: 18%' placeholder='Mã môn học' required/>
+                <input type='text' name='tenmonhoc' style='width: 18%' placeholder='Tên môn học' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+            </form>
+        </div>
+    </div>
+    <footer class='text-center m-4' style='padding-top: 5%'>Copyright &copy 2021 University Of Information And Technology. </footer>
+    "
 ?>
+
+<!-- 
+    Detail Form: 
+     - Form edit Regulation: 123 - 132
+     - Form edit Subject: 
+        + delete: 134 - 139
+        + increase: 140 - 146
+        + edit: 147 - 153
+-->
