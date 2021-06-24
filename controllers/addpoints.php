@@ -47,15 +47,15 @@ if (!isset($_SESSION['loggedin'])) {
         </div>
         <div class="form-group">
           <label for="diem15p">Điểm 15 phút:</label> <br>
-          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 15 phút" name="diem15p" required>
+          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 15 phút" name="diem15p" max="10" min="0" required>
         </div>
         <div class="form-group">
           <label for="diem1t">Điểm 1 tiết:</label> <br>
-          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 1 tiết" name="diem1t" required>
+          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 1 tiết" name="diem1t" max="10" min="0" required>
         </div>
         <div class="form-group">
           <label for="diemcuoiky">Điểm cuối kỳ:</label> <br>
-          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm cuối kỳ" name="diemcuoiky" required>
+          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm cuối kỳ" name="diemcuoiky" max="10" min="0" required>
         </div>        
         <br/>
         <button type="submit" class="btn btn-primary">Thêm</button>
@@ -86,7 +86,10 @@ if (!isset($_SESSION['loggedin'])) {
               document.getElementById("div-inform").style.display = "block";
             </script>';
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Nhập điểm thất bại. Vui lòng kiểm tra lại!";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
     }
     
     $conn->close();

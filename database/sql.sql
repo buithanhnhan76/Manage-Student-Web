@@ -176,7 +176,6 @@ insert into HOCKY values('hk2','Học Kỳ 2');
 
 -- TABLE PHIEUDIEM 
 create table PHIEUDIEM(
-	maphieudiem int AUTO_INCREMENT primary key,
 	mamonhoc varchar(20),
 	mahocsinh int,
 	mahocky varchar(10),
@@ -187,6 +186,7 @@ create table PHIEUDIEM(
 
 
 alter table PHIEUDIEM
+add constraint PK primary key (mamonhoc, mahocsinh, mahocky),
 add constraint FK1 foreign key(mahocsinh) references HOCSINH(mahocsinh),
 add constraint FK2 foreign key(mamonhoc) references MONHOC(mamonhoc),
 add constraint FK3 foreign key(mahocky) references HOCKY(mahocky);
