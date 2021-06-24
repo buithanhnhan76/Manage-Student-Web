@@ -68,6 +68,15 @@ and LOP.siso < (
 	where THAMSO.mathamso = 'SSTĐ'
 );
 
+-- Trigger when delete student
+create trigger HOCSINH_deletestudent
+after delete 
+on HOCSINH
+for EACH ROW
+update LOP
+set LOP.siso = LOP.siso - 1
+where LOP.malop = old.malop;
+
 alter table hocsinh 
 add constraint hocsinh_lop foreign key(malop) references lop(malop);
 -- 10A1 students

@@ -54,7 +54,7 @@ if (!isset($_SESSION['loggedin'])) {
           <input type="email" class="form-control" placeholder="Điền email học sinh" name="email" required>
         </div>
         <div class="dropdown">
-        <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" required>
           Lớp
         </button>
         <div class="dropdown-menu">

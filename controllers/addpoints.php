@@ -23,8 +23,11 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <!-- javascript -->
+    <script src="../js/javascript.js"></script>
 </head>
 <body>
+  <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
   <div class="container mt-5">
     <h2 class="d-inline-block border border-success rounded p-3 mb-4">Nhập điểm học sinh</h2>
@@ -78,7 +81,10 @@ if (!isset($_SESSION['loggedin'])) {
     VALUES ('$mamonhoc', '$mahocsinh', '$mahocky', $diem15p, $diem1t, $diemcuoiky)";
     
     if ($conn->query($sql) === TRUE) {
-      echo "<h4 class='m-3 p-3 d-inline-block alert alert-success'>Nhập điểm thành công <i class='fas fa-check-square'></i> </h4>";
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Nhập điểm thành công";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }
