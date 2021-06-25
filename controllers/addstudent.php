@@ -30,7 +30,7 @@ if (!isset($_SESSION['loggedin'])) {
   <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
   <div class="container mt-5">
-    <h2 class="d-inline-block border border-success rounded p-3 mb-4">Tiếp nhận học sinh</h2>
+    <h2 class="d-inline-block p-3 mb-4">Tiếp nhận học sinh</h2>
     <form action="addstudent.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
           <label for="hoten">Họ và tên:</label>
@@ -54,7 +54,7 @@ if (!isset($_SESSION['loggedin'])) {
           <input type="email" class="form-control" placeholder="Điền email học sinh" name="email" required>
         </div>
         <div class="dropdown">
-        <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" required>
+        <button type="button" id="class" class="btn btn-light border border-secondary dropdown-toggle" data-toggle="dropdown" required>
           Lớp
         </button>
         <div class="dropdown-menu">

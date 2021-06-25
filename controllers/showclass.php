@@ -24,10 +24,10 @@ include 'checkloginstatus.php';
 <body>
   <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
   <div class="container mt-5">
-    <h2 class="d-inline-block border border-success p-2 mb-4">Xuất Danh Sách Lớp</h2>
-    <form action="showclass.php" method="POST">
+    <h2 class="d-inline-block p-2 mb-4">Xuất Danh Sách Lớp</h2>
+    <form action="showclass.php" method="POST" style="display: flex">
         <div class="dropdown">
-            <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <button type="button" id="class" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                 Danh Sách Các Lớp
             </button>
             <div class="dropdown-menu">
@@ -35,7 +35,7 @@ include 'checkloginstatus.php';
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Xuất</button>
+        <button type="submit" class="btn btn-primary" style="margin-right: 0.5rem">Xuất</button>
     </form>
 </div>
 </body>

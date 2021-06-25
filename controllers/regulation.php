@@ -24,11 +24,11 @@ include 'checkloginstatus.php';
 <body>
     <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
     <div class="container mt-5">
-        <h2 class="d-inline-block border border-success p-2 mb-4">Danh Sách Các Quy Định Hiện Có</h2>
+        <h2 class="d-inline-block p-2 mb-4">Quy Định</h2>
     </div>
     <div class="container mt-5" style="display: flex;">
-        <h3 class="text-center" style="flex: 1">BẢNG THAM SỐ</h3>    
-        <h3 class="text-center" style="flex: 1">BẢNG MÔN HỌC</h3>
+        <h4 class="text-center" style="flex: 1">BẢNG THAM SỐ</h4>    
+        <h4 class="text-center" style="flex: 1">BẢNG MÔN HỌC</h4>
     </div>
 </body>
 
@@ -115,8 +115,8 @@ $conn->close();
 // Form edit regulation
 echo "
     <div class='container mt-5' style='display: flex;'>
-        <h3 style='flex: 1; margin-right: 1%'>SỬA BẢNG THAM SỐ</h3>    
-        <h3 style='flex: 1; margin-left: 1%'>SỬA BẢNG MÔN HỌC</h3>
+        <h4 style='flex: 1; margin-right: 1%'>SỬA BẢNG THAM SỐ</h4>    
+        <h4 style='flex: 1; margin-left: 1%'>SỬA BẢNG MÔN HỌC</h4>
     </div>
     <br>
     <div class='container' style='display: flex;'>

@@ -26,12 +26,11 @@ include 'checkloginstatus.php';
 <body>
     <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
     <div class="container mt-5">
-        <h2 class="border border-success p-2 d-inline-block">Báo Cáo Tổng Kết Môn Học</h2> <br>
-        <h2 class="d-inline-block border border-success p-2 mt-3">Vui lòng chọn môn học và học kỳ</h2>
-        <form action="subjectreport.php" method="POST">
+        <h2 class="p-2 d-inline-block">Báo Cáo Tổng Kết Môn Học</h2> <br>
+        <form action="subjectreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Môn Học
                 </button>
                 <div class="dropdown-menu">
@@ -40,7 +39,7 @@ include 'checkloginstatus.php';
             </div>
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">
@@ -48,7 +47,7 @@ include 'checkloginstatus.php';
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Xem</button>
+            <button type="submit" class="btn btn-primary" style="margin-right: 0.5rem">Xem</button>
         </form>
     </div>
     

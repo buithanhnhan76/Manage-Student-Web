@@ -30,7 +30,7 @@ if (!isset($_SESSION['loggedin'])) {
   <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
   <div class="container mt-5">
-    <h2 class="d-inline-block border border-success rounded p-3 mb-4">Xóa học sinh</h2>
+    <h2 class="d-inline-block p-3 mb-4">Xóa học sinh</h2>
     <form action="deletestudent.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
           <label for="hoten">Mã học sinh cần xóa:</label>
