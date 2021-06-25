@@ -92,7 +92,6 @@ if (!isset($_SESSION['loggedin'])) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $ageMax = $row["giatri"];
-            echo $ageMax;
           }
     }
 
@@ -102,7 +101,6 @@ if (!isset($_SESSION['loggedin'])) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $ageMin = $row["giatri"];
-            echo $ageMin;
           }
     }
 

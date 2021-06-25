@@ -65,7 +65,7 @@
         if(isset($_SESSION['loggedin'])){ 
         echo "
           <li class='nav-item'>
-            <a class='nav-link' href='controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i></a>
+            <a class='nav-link' href='controllers/logout.php'>".strtoupper($_SESSION['name']) ." <i class='fas fa-sign-out-alt'></i></a>
           </li>
       ";
         }
@@ -79,9 +79,6 @@
       
         }
         ?>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
       <form class="form-inline my-2 my-lg-0" action="controllers/searchstudent.php" method='POST'>
         <input class="form-control mr-sm-2" type="text" placeholder="Tên học sinh" aria-label="Search" name="searchstudent">
@@ -89,9 +86,11 @@
       </form>
     </div>
   </nav>
+  <!-- img in the index file -->
   <div class="container-fluid">
     <img src="images/img1.jpg" style="width:100%" alt="image of a class" class="img-fluid img-thumbnail">
   </div>
+  <!-- footer copyright -->
   <footer class="text-center m-4">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>
