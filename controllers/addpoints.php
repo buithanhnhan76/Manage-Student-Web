@@ -23,11 +23,14 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <!-- javascript -->
+    <script src="../js/javascript.js"></script>
 </head>
 <body>
+  <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
   <div class="container mt-5">
-    <h2 class="d-inline-block border border-success rounded p-3 mb-4">Nhập điểm học sinh</h2>
+    <h2 class="d-inline-block p-3 mb-4">Nhập điểm học sinh</h2>
     <form action="addpoints.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
           <label for="mamonhoc">Mã môn học:</label>
@@ -44,15 +47,15 @@ if (!isset($_SESSION['loggedin'])) {
         </div>
         <div class="form-group">
           <label for="diem15p">Điểm 15 phút:</label> <br>
-          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 15 phút" name="diem15p" required>
+          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 15 phút" name="diem15p" max="10" min="0" required>
         </div>
         <div class="form-group">
           <label for="diem1t">Điểm 1 tiết:</label> <br>
-          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 1 tiết" name="diem1t" required>
+          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm 1 tiết" name="diem1t" max="10" min="0" required>
         </div>
         <div class="form-group">
           <label for="diemcuoiky">Điểm cuối kỳ:</label> <br>
-          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm cuối kỳ" name="diemcuoiky" required>
+          <input type="number" step="0.001" class="form-control" placeholder="Điền điểm cuối kỳ" name="diemcuoiky" max="10" min="0" required>
         </div>        
         <br/>
         <button type="submit" class="btn btn-primary">Thêm</button>
@@ -78,9 +81,15 @@ if (!isset($_SESSION['loggedin'])) {
     VALUES ('$mamonhoc', '$mahocsinh', '$mahocky', $diem15p, $diem1t, $diemcuoiky)";
     
     if ($conn->query($sql) === TRUE) {
-      echo "<h4 class='m-3 p-3 d-inline-block alert alert-success'>Nhập điểm thành công <i class='fas fa-check-square'></i> </h4>";
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Nhập điểm thành công";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Nhập điểm thất bại. Vui lòng kiểm tra lại!";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
     }
     
     $conn->close();

@@ -21,16 +21,18 @@ include 'checkloginstatus.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <!-- javascript -->
+    <script src="../js/javascript.js"></script>
 </head>
 
 <body>
     <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
     <div class="container mt-5">
-        <h3 class="d-inline-block border border-success p-2">Vui lòng chọn học kỳ</h3>
-        <form action="termreport.php" method="POST">
+        <h3 class="d-inline-block p-2">Báo Cáo Tổng Kết Học Kỳ</h3>
+        <form action="termreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" id="term" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-right: 0.5rem">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">

@@ -89,7 +89,7 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <img src="images/graduation.jpg" alt="image of a class" class="img-fluid img-thumbnail">
+    <img src="images/img1.jpg" style="width:100%" alt="image of a class" class="img-fluid img-thumbnail">
   </div>
   <footer class="text-center m-4">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>

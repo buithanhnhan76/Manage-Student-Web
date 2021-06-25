@@ -18,15 +18,15 @@ include 'checkloginstatus.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <script src="../js/javascript.js"></script>
 </head>
 <body>
   <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
   <div class="container-fluid mt-5">
-    <h2 class="border border-success p-3 d-inline-block">Xem bảng điểm môn học</h2> <br>
-    <h2 class="border border-success p-3 d-inline-block my-3" >Vui lòng chọn lớp, môn học và học kỳ</h2>
-    <form action="getthescoreboard.php" method="POST">
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <h2 class="p-3 d-inline-block">Xem bảng điểm môn học</h2> <br>
+    <form action="getthescoreboard.php" method="POST" style="display: flex;">
+        <div class="dropdown" style="margin-right: 1%">
+            <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Các Lớp
             </button>
             <div class="dropdown-menu">
@@ -34,8 +34,8 @@ include 'checkloginstatus.php';
             </div>
         </div>
         <br>
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <div class="dropdown" style="margin-right: 1%">
+            <button type="button" id="subject" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Môn Học
             </button>
             <div class="dropdown-menu">
@@ -43,8 +43,8 @@ include 'checkloginstatus.php';
             </div>
         </div>
         <br>
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <div class="dropdown" style="margin-right: 1%">
+            <button type="button" id="term" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Học Kỳ
             </button>
             <div class="dropdown-menu">
@@ -52,7 +52,7 @@ include 'checkloginstatus.php';
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Xem</button>
+        <button type="submit" class="btn btn-primary" style="margin-right: 1%">Xem</button>
     </form>
 </div>
 </body>
@@ -79,24 +79,24 @@ include 'checkloginstatus.php';
     
     $result = $conn->query($sql);
 
+    echo "
+    <div class='container'>
+    <h3 class='text-center mt-5'>Bảng điểm môn " .$tenmonhoc .", " .$mahocky .", lớp " .$malop ." </h3>
+    <br>
+    <table class='table table-bordered table-hover'>
+    <thead>
+    <tr class='table-secondary'>
+        <th>Stt</th>
+        <th>Họ tên</th>
+        <th>Điểm 15 phút</th>
+        <th>Điểm 1 tiết</th>
+        <th>Điểm thi cuối học kỳ</th>
+    </tr>
+    </thead>
+    <tbody>
+    ";
+// output data of each row
     if ($result->num_rows > 0) {
-        echo "
-        <div class='container'>
-        <h3 class='text-center'>Bảng điểm môn " .$tenmonhoc .", " .$mahocky .", lớp " .$malop ." </h3>
-        <br>
-        <table class='table table-bordered table-hover'>
-        <thead>
-        <tr class='table-secondary'>
-            <th>Stt</th>
-            <th>Họ tên</th>
-            <th>Điểm 15 phút</th>
-            <th>Điểm 1 tiết</th>
-            <th>Điểm thi cuối học kỳ</th>
-        </tr>
-        </thead>
-        <tbody>
-        ";
-    // output data of each row
     $stt = 0;
     while($row = $result->fetch_assoc()) {
         $stt++;
@@ -108,6 +108,11 @@ include 'checkloginstatus.php';
         echo "<td>" .$row['diemcuoiky'] ."</td>";
         echo "</tr>";
     }
+    } else {
+        echo "<tr>";
+        echo "<td colspan='6' class='text-center'>Danh sách trống</td>";
+        echo "</tr>";
+    }
     echo "
     </tbody>
     </table>
@@ -115,9 +120,6 @@ include 'checkloginstatus.php';
     <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     <br>
     ";
-    } else {
-    echo "0 results";
-    }
     $conn->close();
 }
 ?>
