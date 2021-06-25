@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <title>Thông Tin Học Sinh</title>
 </head>
 
 <body>
@@ -50,13 +51,12 @@ if (isset($_POST['searchstudent'])) {
     $result = $conn->query($sql);
 
 
-    if ($result->num_rows > 0) {
-        echo "
+    echo "
         <br>
         <div class='container'>
-        <h3 class='text-center border border-success d-inline-block p-2'>Thông tin học viên</h3>
+        <h3 class='text-center d-inline-block p-2'>Thông tin học viên</h3>
         <br>
-        <br>
+        <h3 class='text-center d-block p-2'>Thông tin học viên" .$searchstudent ."</h3>
         <table class='table table-bordered table-hover'>
         <thead>
         <tr class='table-secondary'>
@@ -69,6 +69,7 @@ if (isset($_POST['searchstudent'])) {
         </thead>
         <tbody>
         ";
+    if ($result->num_rows > 0) {
         // output data of each row
         $stt = 0;
         while ($row = $result->fetch_assoc()) {
@@ -81,15 +82,20 @@ if (isset($_POST['searchstudent'])) {
             echo "<td>" . $row['TBHK2'] . "</td>";
             echo "</tr>";
         }
+       
+    } else {
         echo "
+        <tr>
+            <td colspan='6' class='text-center'>Không Có Dữ Liệu!</td>
+        </tr>
+        ";
+    }
+    echo "
     </tbody>
     </table>
     </div>
     <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     ";
-    } else {
-        echo "0 results";
-    }
     $conn->close();
 }
 ?>

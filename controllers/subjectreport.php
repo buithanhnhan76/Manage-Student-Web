@@ -80,24 +80,24 @@ if (isset($_POST['tenmonhoc'])) {
     ";
 
     $result = $conn->query($sql);
-
+    echo "
+    <div class='container'>
+    <br>
+    <h3 class='text-center'>Báo Cáo Tổng Kết Môn" .$tenmonhoc .", " .strtoupper($mahocky) ."</h3>
+    <br>
+    <table class='table table-bordered'>
+    <thead>
+    <tr>
+        <th>Stt</th>
+        <th>Lớp</th>
+        <th>Sỉ số</th>
+        <th>Số lượng đạt</th>
+        <th>Tỉ lệ %</th>
+    </tr>
+    </thead>
+    <tbody>
+    ";
     if ($result->num_rows > 0) {
-        echo "
-        <div class='container'>
-        <h3 class='text-center'>Báo Cáo Tổng Kết Môn Học</h3>
-        <br>
-        <table class='table table-bordered'>
-        <thead>
-        <tr>
-            <th>Stt</th>
-            <th>Lớp</th>
-            <th>Sỉ số</th>
-            <th>Số lượng đạt</th>
-            <th>Tỉ lệ %</th>
-        </tr>
-        </thead>
-        <tbody>
-        ";
         // output data of each row
         $stt = 0;
         while ($row = $result->fetch_assoc()) {
@@ -110,16 +110,21 @@ if (isset($_POST['tenmonhoc'])) {
             echo "<td>" . $row['Tỉ lệ %'] . "</td>";
             echo "</tr>";
         }
+       
+    } else {
         echo "
+        <tr>
+            <td colspan='6' class='text-center'>Không Có Dữ Liệu!</td>
+        </tr>
+        ";
+    }
+    echo "
     </tbody>
     </table>
     </div>
     <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     <br>
     ";
-    } else {
-        echo "0 results";
-    }
     $conn->close();
 }
 ?>

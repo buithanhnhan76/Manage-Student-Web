@@ -52,43 +52,46 @@ if (isset($_POST['mahocky'])) {
     include 'connectdb.php';
     $mahocky = $_POST['mahocky'];
 
-    $sql = "select l.malop, l.siso, COUNT(hs.mahocsinh) as 'Số lượng đạt', (COUNT(hs.mahocsinh)/l.siso)*100 as 'Tỉ lệ %'
-    from LOP l, HOCSINH hs
+    // if user has not enter the point of student, then the computer wil count it as not fail
+    $sql="select l.malop, l.siso, COUNT(hs.mahocsinh) as 'Số lượng đạt', (COUNT(hs.mahocsinh)/l.siso)*100 as 'Tỉ lệ %'
+    from LOP l, HOCSINH hs, PHIEUDIEM pd, HOCKY hk
     where l.malop = hs.malop
+    and hk.mahocky = pd.mahocky
+    and pd.mahocsinh = hs.mahocsinh
+    and hk.mahocky = '$mahocky'
     and hs.mahocsinh not in (
     select distinct hs.mahocsinh
-    from PHIEUDIEM pd, HOCKY hk
-    where pd.mahocsinh = hs.mahocsinh
-    and pd.mahocky = hk.mahocky
-    and hk.mahocky = '$mahocky'
+    where hk.mahocky = '$mahocky'
     and (pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8 < (
         select giatri
         from THAMSO
         where THAMSO.mathamso = 'ĐĐM'
     )
     )
-    group by l.malop
+    group by l.malop;
     ";
 
-    $result = $conn->query($sql);
 
+    $result = $conn->query($sql);
+    
+    echo "
+    <div class='container'>
+    <h3 class='text-center'>Báo cáo tổng kết " .strtoupper($mahocky) ."</h3>
+    <br>
+    <table class='table table-bordered table-hover'>
+    <thead>
+    <tr class='table-secondary'>
+        <th>Stt</th>
+        <th>Lớp</th>
+        <th>Sỉ số</th>
+        <th>Số lượng đạt</th>
+        <th>Tỉ lệ %</th>
+    </tr>
+    </thead>
+    <tbody>
+    ";
     if ($result->num_rows > 0) {
-        echo "
-        <div class='container'>
-        <h3 class='text-center'>Báo cáo tổng kết học kỳ</h3>
-        <br>
-        <table class='table table-bordered table-hover'>
-        <thead>
-        <tr class='table-secondary'>
-            <th>Stt</th>
-            <th>Lớp</th>
-            <th>Sỉ số</th>
-            <th>Số lượng đạt</th>
-            <th>Tỉ lệ %</th>
-        </tr>
-        </thead>
-        <tbody>
-        ";
+       
         // output data of each row
         $stt = 0;
         while ($row = $result->fetch_assoc()) {
@@ -101,16 +104,21 @@ if (isset($_POST['mahocky'])) {
             echo "<td>" . $row['Tỉ lệ %'] . "</td>";
             echo "</tr>";
         }
+        
+    } else {
         echo "
+        <tr>
+            <td colspan='6'>Không Có Dữ Liệu</td>    
+        </tr>
+        ";
+    }
+    echo "
     </tbody>
     </table>
     </div>
     <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
     <br>
     ";
-    } else {
-        echo "0 results";
-    }
     $conn->close();
 }
 ?>

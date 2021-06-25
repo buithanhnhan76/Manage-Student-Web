@@ -53,12 +53,10 @@ if (!isset($_SESSION['loggedin'])) {
     // delete PHIEUDIEM before delete Student 
     $sql = "delete from PHIEUDIEM
     where mahocsinh = '$mahocsinh'";
-    if($conn->query($sql) === TRUE)
-    {
+    $conn->query($sql);
+
     $sql = " delete from HOCSINH
-    where mahocsinh = '$mahocsinh';
-    ";
-    }
+    where mahocsinh = '$mahocsinh';";
     if ($conn->query($sql) === TRUE) {
       echo '<script type="text/JavaScript">
               document.getElementById("div-inform").innerHTML += "Xóa Học Viên Thành Công";
