@@ -19,6 +19,8 @@ include 'checkloginstatus.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <!-- Javascript -->
+    <script src="../js/javascript.js"></script>
 </head>
 
 <body>
@@ -45,7 +47,7 @@ if ($result->num_rows > 0) {
     echo "
     <br>
     <div class='container-fluid' style='display: flex'>
-    <table class='table table-bordered table-hover' style='width: 33%; margin-right:1%'>
+    <table class='table table-bordered table-hover' style='width: 35%;'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
@@ -159,33 +161,38 @@ echo "
     </div>
     <br>
     <div class='container-fluid' style='display: flex;'>
-        <form action='editregulation.php' method='POST' style='flex: 1; margin-right: 1%'>
+        <div class='editregulation' style='flex: 1; margin-left: 1%'>
+        <form id='thamso' action='editregulation.php' method='POST' style='flex: 1; margin-right: 1%'>
             <input type='hidden' name='action' value='editRegulation'>
-            <label for='mathamso' style='min-width: 92px'>Mã Tham Số: </label>
-            <input type='text' name='mathamso' required/>
-            <br>
-            <label for='giatri' style='min-width: 92px'>Giá Trị: </label>
-            <input type='text' name='giatri' required/>
-            <br>
+            <label for='mathamso' style='width: 30%'>Sửa Tham Số: </label>
+            <input type='text' placeholder='Mã tham số' style='width: 18%;' name='mathamso' required/>
+            <input type='text' name='giatri' placeholder='Giá trị' style='width: 18%;'required/>
             <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
         </form>
+        <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='deleteRegulation'>
+                <label style='min-width: 30%'>Xóa Tham Số: </label>
+                <input type='text' name='mathamso' style='width: 18%' placeholder='Mã TS' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+        </form>
+        </div>
         <div class='editsubject' style='flex: 1; margin-left: 1%'>
             <form action='editregulation.php' method='POST'>
                 <input type='hidden' name='action' value='deleteSubject'>
-                <label style='min-width: 23%'>Xóa Môn Học: </label>
+                <label style='min-width: 33%'>Xóa Môn Học: </label>
                 <input type='text' name='mamonhoc' style='width: 18%' placeholder='Mã môn học' required/>
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
             </form>
             <form action='editregulation.php' method='POST'>
                 <input type='hidden' name='action' value='increaseSubject'>
-                <label style='min-width: 23%'>Thêm Môn Học: </label>
+                <label style='min-width: 33%'>Thêm Môn Học: </label>
                 <input type='text' name='tenmonhoc' style='width: 18%' placeholder='Tên môn học' required/>
                 <input type='text' name='mamonhoc' style='width: 18%' placeholder='Mã môn học' required/>
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px; text-align: right' value='Cập Nhật'>
             </form>
             <form action='editregulation.php' method='POST'>
                 <input type='hidden' name='action' value='editSubject'>
-                <label style='min-width: 23%'>Sửa Tên Môn Học: </label>
+                <label style='min-width: 33%'>Sửa Tên Môn Học: </label>
                 <input type='text' name='mamonhoc' style='width: 18%' placeholder='Mã môn học' required/>
                 <input type='text' name='tenmonhoc' style='width: 18%' placeholder='Tên môn học' required/>
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>

@@ -15,7 +15,14 @@
         pushDataToDB($conn, $sql);
         $conn->close();
     }
-
+    // delete regulation
+    elseif ($action == "deleteRegulation")
+    {
+        $mathamso = $_POST['mathamso'];
+        $sql = "delete from THAMSO where mathamso ='$mathamso'";
+            pushDataToDB($conn, $sql);
+            $conn->close();
+    }
     // Increase Subject
     elseif ($action == "increaseSubject")
     {

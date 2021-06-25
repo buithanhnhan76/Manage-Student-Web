@@ -74,6 +74,7 @@
             <li class='nav-item'>
               <a class='nav-link' href='login.html'>Đăng nhập</a>
             </li>
+            
         ";
       
         }
