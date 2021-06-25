@@ -18,6 +18,7 @@ include 'checkloginstatus.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+    <script src="../js/javascript.js"></script>
 </head>
 <body>
   <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
@@ -26,7 +27,7 @@ include 'checkloginstatus.php';
     <h2 class="border border-success p-3 d-inline-block my-3" >Vui lòng chọn lớp, môn học và học kỳ</h2>
     <form action="getthescoreboard.php" method="POST">
         <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Các Lớp
             </button>
             <div class="dropdown-menu">
@@ -35,7 +36,7 @@ include 'checkloginstatus.php';
         </div>
         <br>
         <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <button type="button" id="subject" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Môn Học
             </button>
             <div class="dropdown-menu">
@@ -44,7 +45,7 @@ include 'checkloginstatus.php';
         </div>
         <br>
         <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <button type="button" id="term" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 Danh Sách Học Kỳ
             </button>
             <div class="dropdown-menu">
