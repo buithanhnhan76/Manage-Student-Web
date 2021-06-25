@@ -26,9 +26,10 @@ include 'checkloginstatus.php';
     <div class="container mt-5">
         <h2 class="d-inline-block p-2 mb-4">Quy Định</h2>
     </div>
-    <div class="container mt-5" style="display: flex;">
+    <div class="container-fluid mt-5" style="display: flex;">
         <h4 class="text-center" style="flex: 1">BẢNG THAM SỐ</h4>    
         <h4 class="text-center" style="flex: 1">BẢNG MÔN HỌC</h4>
+        <h4 class="text-center" style="flex: 1">BẢNG LỚP</h4>
     </div>
 </body>
 
@@ -43,8 +44,8 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo "
     <br>
-    <div class='container' style='display: flex'>
-    <table class='table table-bordered table-hover' style='width: 50%; margin-right:1%'>
+    <div class='container-fluid' style='display: flex'>
+    <table class='table table-bordered table-hover' style='width: 33%; margin-right:1%'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
@@ -81,7 +82,7 @@ $stt = 0;
 
 if ($result->num_rows > 0) {
     echo "
-    <table class='table table-bordered table-hover' style='width: 50%; margin-left:1%'>
+    <table class='table table-bordered table-hover' style='width: 33%; margin-left:1%'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>STT</th>
@@ -105,6 +106,43 @@ if ($result->num_rows > 0) {
     echo"
     </tbody>
     </table>
+    ";
+} else {
+    echo "0 results";
+}
+
+
+// Table LOP
+$sql = "SELECT * FROM  LOP";
+$result = $conn->query($sql);
+$stt = 0;
+
+if ($result->num_rows > 0) {
+    echo "
+    <table class='table table-bordered table-hover' style='width: 33%; margin-left:1%'>
+    <thead>
+    <tr class='table-secondary'>
+        <th style='vertical-align: middle; text-align: center;'>STT</th>
+        <th style='vertical-align: middle; text-align: center;'>Mã Lớp</th>
+        <th style='vertical-align: middle; text-align: center;'>Tên Lớp</th>
+    </tr>
+    </thead>
+    <tbody>
+    ";
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        $stt++;
+        echo "
+    <tr>
+        <td style='vertical-align: middle; text-align: center;'>" . $stt . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['malop'] . "</td>
+        <td style='vertical-align: middle; text-align: center;'>" . $row['tenlop'] . "</td>
+    </tr>
+    ";
+    }
+    echo"
+    </tbody>
+    </table>
     </div>
     ";
 } else {
@@ -114,12 +152,13 @@ $conn->close();
 
 // Form edit regulation
 echo "
-    <div class='container mt-5' style='display: flex;'>
+    <div class='container-fluid mt-5' style='display: flex;'>
         <h4 style='flex: 1; margin-right: 1%'>SỬA BẢNG THAM SỐ</h4>    
         <h4 style='flex: 1; margin-left: 1%'>SỬA BẢNG MÔN HỌC</h4>
+        <h4 style='flex: 1; margin-left: 1%'>SỬA BẢNG LỚP</h4>
     </div>
     <br>
-    <div class='container' style='display: flex;'>
+    <div class='container-fluid' style='display: flex;'>
         <form action='editregulation.php' method='POST' style='flex: 1; margin-right: 1%'>
             <input type='hidden' name='action' value='editRegulation'>
             <label for='mathamso' style='min-width: 92px'>Mã Tham Số: </label>
@@ -152,7 +191,30 @@ echo "
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
             </form>
         </div>
+        <div class='editclass' style='flex: 1; margin-left: 1%'>
+        <form action='editregulation.php' method='POST'>
+            <input type='hidden' name='action' value='deleteClass'>
+            <label style='min-width: 23%'>Xóa Lớp: </label>
+            <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
+            <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+        </form>
+        <form action='editregulation.php' method='POST'>
+            <input type='hidden' name='action' value='increaseClass'>
+            <label style='min-width: 23%'>Thêm Lớp: </label>
+            <input type='text' name='tenlop' style='width: 18%' placeholder='Tên lớp' required/>
+            <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
+            <input type='submit' class='btn btn-primary' style='padding: 1.7px; text-align: right' value='Cập Nhật'>
+        </form>
+        <form action='editregulation.php' method='POST'>
+            <input type='hidden' name='action' value='editClass'>
+            <label style='min-width: 23%'>Sửa Tên Lớp: </label>
+            <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
+            <input type='text' name='tenlop' style='width: 18%' placeholder='Tên lớp' required/>
+            <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+        </form>
     </div>
+    </div>
+
     <footer class='text-center m-4' style='padding-top: 5%'>Copyright &copy 2021 University Of Information And Technology. </footer>
     "
 ?>

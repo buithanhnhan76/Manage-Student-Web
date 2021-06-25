@@ -1,4 +1,4 @@
-drop database quanlyhocsinh;
+drop database if exists quanlyhocsinh;
 create database quanlyhocsinh;
 
 use quanlyhocsinh;

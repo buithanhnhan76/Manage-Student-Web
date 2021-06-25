@@ -11,5 +11,5 @@ function choseSubject(valueSubject) {
 };
 
 function choseTerm(valueTerm) {
-    document.getElementById("term").innerHTML = valueTerm;
+    document.getElementById("term").innerHTML = valueTerm.toUpperCase();
 };

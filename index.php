@@ -48,7 +48,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Báo Cáo Tổng Kết
+            Báo cáo tổng kết
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="controllers/subjectreport.php">Báo cáo kết quả môn học</a>
@@ -58,7 +58,7 @@
           </div>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="controllers/regulation.php">QĐ</a>
+          <a class="nav-link" href="controllers/regulation.php">Quy Định</a>
         </li>
         <?php
         session_start();

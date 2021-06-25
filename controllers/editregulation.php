@@ -53,6 +53,50 @@
             $conn->close();
         }
     }
+      // Increase Class
+      elseif ($action == "increaseClass")
+      {
+          $malop = $_POST['malop'];
+          $tenlop = $_POST['tenlop'];
+          $sql = "insert into lop(malop,tenlop) values ('$malop', '$tenlop')" ;
+          // echo "$sql";
+          // die();
+          pushDataToDB($conn, $sql);
+          $conn->close();
+      }
+     // Edit Class
+     elseif ($action == "editClass")
+     {
+         $malop = $_POST['malop'];
+         $tenlop = $_POST['tenlop'];
+         $sql = "update LOP set tenlop = '$tenlop' where malop = '$malop';" ;
+         // echo "$sql";
+         // die();
+         pushDataToDB($conn, $sql);
+         $conn->close();
+     }
+    // delete Class
+    elseif ($action == "deleteClass")
+    {
+        $malop = $_POST['malop'];
+        $sql = "
+        delete from PHIEUDIEM where PHIEUDIEM.mahocsinh in (
+            select distinct mahocsinh
+            from HOCSINH, LOP
+            where LOP.malop = HOCSINH.malop
+            and LOP.malop = '$malop'
+        )
+        ";
+        if($conn->query($sql) === TRUE)
+        $sql = "delete from HOCSINH where malop ='$malop'";
+        if ($conn->query($sql) === TRUE) {
+            $sql = "delete from LOP where malop ='$malop'";
+            pushDataToDB($conn, $sql);
+            $conn->close();
+        }else {
+            $conn->close();
+        }
+    }
 
     function pushDataToDB ($conn, $sql)
     {

@@ -23,7 +23,7 @@ include 'checkloginstatus.php';
 <body>
   <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
   <div class="container-fluid mt-5">
-    <h2 class="p-3 d-inline-block">Xem bảng điểm môn học</h2> <br>
+    <h2 class="p-3 d-inline-block">Xem Bảng Điểm Môn Học</h2> <br>
     <form action="getthescoreboard.php" method="POST" style="display: flex;">
         <div class="dropdown" style="margin-right: 1%">
             <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -81,7 +81,7 @@ include 'checkloginstatus.php';
 
     echo "
     <div class='container'>
-    <h3 class='text-center mt-5'>Bảng điểm môn " .$tenmonhoc .", " .$mahocky .", lớp " .$malop ." </h3>
+    <h3 class='text-center mt-5'>Bảng điểm môn " .$tenmonhoc .", " .strtoupper($mahocky) .", lớp " .$malop ." </h3>
     <br>
     <table class='table table-bordered table-hover'>
     <thead>

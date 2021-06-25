@@ -28,7 +28,7 @@ include 'checkloginstatus.php';
     <form action="showclass.php" method="POST" style="display: flex">
         <div class="dropdown">
             <button type="button" id="class" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
-                Danh Sách Các Lớp
+                Danh Sách Lớp
             </button>
             <div class="dropdown-menu">
                 <?php include'generateclass.php'?>

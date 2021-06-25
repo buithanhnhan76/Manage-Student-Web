@@ -21,6 +21,8 @@ include 'checkloginstatus.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
     <link rel="stylesheet" href="../css/style.css">;
+     <!-- javascript -->
+     <script src="../js/javascript.js"></script>
 </head>
 
 <body>
@@ -30,7 +32,7 @@ include 'checkloginstatus.php';
         <form action="subjectreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+                <button type="button" id="subject" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Môn Học
                 </button>
                 <div class="dropdown-menu">
@@ -39,7 +41,7 @@ include 'checkloginstatus.php';
             </div>
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+                <button type="button" id="term" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">
