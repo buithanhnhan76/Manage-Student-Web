@@ -46,9 +46,9 @@ include 'checkloginstatus.php';
         <h2 class="d-inline-block p-2 mb-4">Quy Định</h2>
     </div>
     <div class="container-fluid mt-5" style="display: flex;">
-        <h4 class="text-center" style="flex: 1"><button onclick="showTableRegulation()" class="btn btn-success">BẢNG THAM SỐ</button></h4>    
-        <h4 class="text-center" style="flex: 1"><button onclick="showTableSubject()" class="btn btn-success">BẢNG MÔN HỌC</button></h4>  
-        <h4 class="text-center" style="flex: 1"><button onclick="showTableClass()" class="btn btn-success">BẢNG LỚP</button></h4>  
+        <h4 class="text-center" style="flex: 1"><button onclick="showTableRegulation()" class="btn btn-success">BẢNG THAM SỐ</button></h4>
+        <h4 class="text-center" style="flex: 1"><button onclick="showTableSubject()" class="btn btn-success">BẢNG MÔN HỌC</button></h4>
+        <h4 class="text-center" style="flex: 1"><button onclick="showTableClass()" class="btn btn-success">BẢNG LỚP</button></h4>
     </div>
 </body>
 
@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
     </tr>
     ";
     }
-    echo"
+    echo "
     </tbody>
     </table>
     ";
@@ -122,7 +122,7 @@ if ($result->num_rows > 0) {
     </tr>
     ";
     }
-    echo"
+    echo "
     </tbody>
     </table>
     ";
@@ -159,7 +159,7 @@ if ($result->num_rows > 0) {
     </tr>
     ";
     }
-    echo"
+    echo "
     </tbody>
     </table>
     </div>
