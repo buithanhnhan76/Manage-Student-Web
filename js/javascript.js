@@ -13,3 +13,7 @@ function choseSubject(valueSubject) {
 function choseTerm(valueTerm) {
     document.getElementById("term").innerHTML = valueTerm.toUpperCase();
 };
+
+showTable = () => {
+    alert("table click");
+}

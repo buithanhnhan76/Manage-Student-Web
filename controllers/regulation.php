@@ -1,6 +1,23 @@
 <?php
 include 'checkloginstatus.php';
 ?>
+<script>
+    showTableRegulation = () => {
+        document.getElementsByClassName("regulation")[0].style.visibility = "visible";
+        document.getElementsByClassName("regulation")[1].style.visibility = "visible";
+        document.getElementsByClassName("regulation")[2].style.visibility = "visible";
+    }
+    showTableSubject = () => {
+        document.getElementsByClassName("subject")[0].style.visibility = "visible";
+        document.getElementsByClassName("subject")[1].style.visibility = "visible";
+        document.getElementsByClassName("subject")[2].style.visibility = "visible";
+    }
+    showTableClass = () => {
+        document.getElementsByClassName("class")[0].style.visibility = "visible";
+        document.getElementsByClassName("class")[1].style.visibility = "visible";
+        document.getElementsByClassName("class")[2].style.visibility = "visible";
+    }
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +46,9 @@ include 'checkloginstatus.php';
         <h2 class="d-inline-block p-2 mb-4">Quy Định</h2>
     </div>
     <div class="container-fluid mt-5" style="display: flex;">
-        <h4 class="text-center" style="flex: 1">BẢNG THAM SỐ</h4>    
-        <h4 class="text-center" style="flex: 1">BẢNG MÔN HỌC</h4>
-        <h4 class="text-center" style="flex: 1">BẢNG LỚP</h4>
+        <h4 class="text-center" style="flex: 1"><button onclick="showTableRegulation()" class="btn btn-success">BẢNG THAM SỐ</button></h4>    
+        <h4 class="text-center" style="flex: 1"><button onclick="showTableSubject()" class="btn btn-success">BẢNG MÔN HỌC</button></h4>  
+        <h4 class="text-center" style="flex: 1"><button onclick="showTableClass()" class="btn btn-success">BẢNG LỚP</button></h4>  
     </div>
 </body>
 
@@ -46,8 +63,8 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo "
     <br>
-    <div class='container-fluid' style='display: flex'>
-    <table class='table table-bordered table-hover' style='width: 35%;'>
+    <div class='container-fluid' style='display:flex'>
+    <table class='table table-bordered table-hover regulation' style='flex:1;visibility:hidden;'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
@@ -84,7 +101,7 @@ $stt = 0;
 
 if ($result->num_rows > 0) {
     echo "
-    <table class='table table-bordered table-hover' style='width: 33%; margin-left:1%'>
+    <table class='table table-bordered table-hover subject ml-3' style='flex:1; visibility: hidden'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>STT</th>
@@ -121,7 +138,7 @@ $stt = 0;
 
 if ($result->num_rows > 0) {
     echo "
-    <table class='table table-bordered table-hover' style='width: 33%; margin-left:1%'>
+    <table class='table table-bordered table-hover class' style='margin-left:1%;flex:1; visibility: hidden'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>STT</th>
@@ -155,13 +172,13 @@ $conn->close();
 // Form edit regulation
 echo "
     <div class='container-fluid mt-5' style='display: flex;'>
-        <h4 style='flex: 1; margin-right: 1%'>SỬA BẢNG THAM SỐ</h4>    
-        <h4 style='flex: 1; margin-left: 1%'>SỬA BẢNG MÔN HỌC</h4>
-        <h4 style='flex: 1; margin-left: 1%'>SỬA BẢNG LỚP</h4>
+        <h4 class='regulation' style='flex: 1; margin-right: 1%;visibility: hidden'>SỬA BẢNG THAM SỐ</h4>    
+        <h4 class='subject' style='flex: 1; margin-left: 1%;visibility: hidden'>SỬA BẢNG MÔN HỌC</h4>
+        <h4 class='class' style='flex: 1; margin-left: 1%;visibility: hidden'>SỬA BẢNG LỚP</h4>
     </div>
     <br>
     <div class='container-fluid' style='display: flex;'>
-        <div class='editregulation' style='flex: 1; margin-left: 1%'>
+        <div class='editregulation regulation' style='flex: 1; margin-left: 1%; visibility: hidden'>
         <form id='thamso' action='editregulation.php' method='POST' style='flex: 1; margin-right: 1%'>
             <input type='hidden' name='action' value='editRegulation'>
             <label for='mathamso' style='width: 30%'>Sửa Tham Số: </label>
@@ -176,7 +193,7 @@ echo "
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
         </form>
         </div>
-        <div class='editsubject' style='flex: 1; margin-left: 1%'>
+        <div class='editsubject subject' style='flex: 1; margin-left: 1%;visibility: hidden'>
             <form action='editregulation.php' method='POST'>
                 <input type='hidden' name='action' value='deleteSubject'>
                 <label style='min-width: 33%'>Xóa Môn Học: </label>
@@ -198,7 +215,7 @@ echo "
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
             </form>
         </div>
-        <div class='editclass' style='flex: 1; margin-left: 1%'>
+        <div class='editclass class' style='flex: 1; margin-left: 1%; visibility: hidden'>
         <form action='editregulation.php' method='POST'>
             <input type='hidden' name='action' value='deleteClass'>
             <label style='min-width: 23%'>Xóa Lớp: </label>
