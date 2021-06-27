@@ -20,15 +20,82 @@ include 'checkloginstatus.php';
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
-    <link rel="stylesheet" href="../css/style.css">;
+    <link rel="stylesheet" href="../css/style.css">
     <!-- javascript -->
     <script src="../js/javascript.js"></script>
 </head>
 
 <body>
-    <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
-    <div class="container mt-5">
-        <h3 class="d-inline-block p-2">Báo Cáo Tổng Kết Học Kỳ</h3>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../index.php">Quản Lý Học Sinh <i class="fas fa-school text-secondary"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Học Sinh
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../controllers/addstudent.php">Tiếp nhận học sinh</a>
+                <a class="dropdown-item" href="../controllers/editstudent.php">Sửa thông tin học sinh</a>
+                <a class="dropdown-item" href="../controllers/deletestudent.php">Xóa học sinh</a>
+                <a class="dropdown-item" href="../controllers/addpoints.php">Nhập điểm học sinh</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link" href="../controllers/showclass.php">Danh sách lớp</a>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link" href="../controllers/getthescoreboard.php">Nhận bảng điểm môn</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Báo cáo tổng kết
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../controllers/subjectreport.php">Báo cáo kết quả môn học</a>
+                <a class="dropdown-item" href="../controllers/termreport.php">Báo cáo kết quả tổng kết học kỳ</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link" href="../controllers/regulation.php">Quy Định</a>
+            </li>
+            <?php
+            session_start();
+            if(isset($_SESSION['loggedin'])){ 
+            echo "
+            <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"
+            .strtoupper($_SESSION['name']) ."
+            </a>
+            <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                <a class='dropdown-item' href='../controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i> </a>
+                <div class='dropdown-divider'></div>
+                <a class='dropdown-item' href='../controllers/adduser.php'>Tạo người dùng mới</a>
+            </div>
+        ";
+            }
+            else{
+            echo "
+                <li class='nav-item'>
+                <a class='nav-link' href='login.html'>Đăng nhập</a>
+                </li>
+            ";
+            }
+            ?>
+        </ul>
+        <a href="../index.php" class="btn btn-outline-success my-2 my-sm-0">Về màn hình chính</a>
+        </div>
+    </nav>
+    <div class="container mt-2">
+        <h3 class="d-inline-block p-2 mb-2">Báo Cáo Tổng Kết Học Kỳ</h3>
         <form action="termreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">

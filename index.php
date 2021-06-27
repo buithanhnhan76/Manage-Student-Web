@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
-    <link rel="stylesheet" href="css/style.css">;
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
