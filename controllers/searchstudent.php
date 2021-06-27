@@ -19,11 +19,70 @@
 </head>
 
 <body>
-    <br>
-    <div class="container-fluid">
-        <a href="../index.php" class="float-right border border-success p-2">Về màn hình chính</a>
-    </div>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../index.php">Quản Lý Học Sinh <i class="fas fa-school text-secondary"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Học Sinh
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../controllers/addstudent.php">Tiếp nhận học sinh</a>
+                <a class="dropdown-item" href="../controllers/editstudent.php">Sửa thông tin học sinh</a>
+                <a class="dropdown-item" href="../controllers/deletestudent.php">Xóa học sinh</a>
+                <a class="dropdown-item" href="../controllers/addpoints.php">Nhập điểm học sinh</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../controllers/showclass.php">Danh sách lớp</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../controllers/getthescoreboard.php">Nhận bảng điểm môn</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Báo Cáo Tổng Kết
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../controllers/subjectreport.php">Báo cáo kết quả môn học</a>
+                <a class="dropdown-item" href="../controllers/termreport.php">Báo cáo kết quả tổng kết học kỳ</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+              </div>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../controllers/regulation.php">Quy Định</a>
+            </li>
+            <?php
+            session_start();
+            if(isset($_SESSION['loggedin'])){ 
+            echo "
+              <li class='nav-item'>
+                <a class='nav-link' href='../controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i></a>
+              </li>
+          ";
+            }
+            else{
+              echo "
+                <li class='nav-item'>
+                  <a class='nav-link' href='login.html'>Đăng nhập</a>
+                </li>
+            ";
+            }
+            ?>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+          </ul>
+          <a href="../index.php" class="btn btn-outline-success my-2 my-sm-0">Về màn hình chính</a>
+        </div>
+    </nav>
 </body>
 
 </html>
@@ -55,6 +114,7 @@ if (isset($_POST['searchstudent'])) {
         <br>
         <div class='container'>
         <h3 class='text-center d-inline-block p-2'>Thông tin học viên</h3>
+        <br>
         <br>
         <h3 class='text-center d-block p-2'>Thông tin học viên" .$searchstudent ."</h3>
         <table class='table table-bordered table-hover'>
