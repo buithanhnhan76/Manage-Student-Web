@@ -16,23 +16,6 @@ if($_SESSION['id'] != 1){
 	exit;
 }
 ?>
-<script>
-    showTableRegulation = () => {
-        document.getElementsByClassName("regulation")[0].style.visibility = "visible";
-        document.getElementsByClassName("regulation")[1].style.visibility = "visible";
-        document.getElementsByClassName("regulation")[2].style.visibility = "visible";
-    }
-    showTableSubject = () => {
-        document.getElementsByClassName("subject")[0].style.visibility = "visible";
-        document.getElementsByClassName("subject")[1].style.visibility = "visible";
-        document.getElementsByClassName("subject")[2].style.visibility = "visible";
-    }
-    showTableClass = () => {
-        document.getElementsByClassName("class")[0].style.visibility = "visible";
-        document.getElementsByClassName("class")[1].style.visibility = "visible";
-        document.getElementsByClassName("class")[2].style.visibility = "visible";
-    }
-</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,10 +109,10 @@ if($_SESSION['id'] != 1){
     <div class="container mt-2">
         <h2 class="d-inline-block p-2 mb-2">Quy Định</h2>
     </div>
-    <div class="container-fluid mt-5" style="display: flex;">
-        <h4 class="text-center" style="flex: 1"><button onclick="showTableRegulation()" class="btn btn-success">BẢNG THAM SỐ</button></h4>
-        <h4 class="text-center" style="flex: 1"><button onclick="showTableSubject()" class="btn btn-success">BẢNG MÔN HỌC</button></h4>
-        <h4 class="text-center" style="flex: 1"><button onclick="showTableClass()" class="btn btn-success">BẢNG LỚP</button></h4>
+    <div class="container mt-5" style="display: flex;">
+        <h4 class="text-center"><button onclick="showTableRegulation()" class="btn btn-success ml-2 mr-2">BẢNG THAM SỐ</button></h4>
+        <h4 class="text-center"><button onclick="showTableSubject()" class="btn btn-success mr-2">BẢNG MÔN HỌC</button></h4>
+        <h4 class="text-center"><button onclick="showTableClass()" class="btn btn-success mr-2">BẢNG LỚP</button></h4>
     </div>
 </body>
 
@@ -145,32 +128,50 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     echo "
     <br>
-    <div class='container-fluid' style='display:flex'>
-    <table class='table table-bordered table-hover regulation' style='flex:1;visibility:hidden'>
-    <thead>
-    <tr class='table-secondary'>
-        <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
-        <th style='vertical-align: middle; text-align: center;'>Tên Tham Số</th>
-        <th style='vertical-align: middle; text-align: center;'>Giá Trị</th>
-        <th style='vertical-align: middle; text-align: center;'>Ghi Chú</th>
-    </tr>
-    </thead>
-    <tbody>
-    ";
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
+    <div class='container' id='divTableRegulation'>
+        <h3 class='text-center'>BẢNG THAM SỐ</h3>
+        <table class='table table-bordered table-hover regulation m-2'>
+        <thead>
+        <tr class='table-secondary'>
+            <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
+            <th style='vertical-align: middle; text-align: center;'>Tên Tham Số</th>
+            <th style='vertical-align: middle; text-align: center;'>Giá Trị</th>
+            <th style='vertical-align: middle; text-align: center;'>Ghi Chú</th>
+        </tr>
+        </thead>
+        <tbody>
+        ";
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "
+        <tr>
+            <td style='vertical-align: middle; text-align: center;'>" . $row['mathamso'] . "</td>
+            <td style='vertical-align: middle; text-align: center;'>" . $row['tenthamso'] . "</td>
+            <td style='vertical-align: middle; text-align: center;'>" . $row['giatri'] . "</td>
+            <td style='vertical-align: middle; text-align: center;'>" . $row['ghichu'] . "</td>
+        </tr>
+        ";
+        }
         echo "
-    <tr>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['mathamso'] . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['tenthamso'] . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['giatri'] . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['ghichu'] . "</td>
-    </tr>
-    ";
-    }
-    echo "
-    </tbody>
-    </table>
+        </tbody>
+        </table>
+        <div class='editregulation regulation m-2 mt-5'>
+            <h4 class='regulation mb-3'>SỬA BẢNG THAM SỐ</h4>
+            <form id='thamso' action='editregulation.php' method='POST' style='margin-right: 1%'>
+                <input type='hidden' name='action' value='editRegulation'>
+                <label for='mathamso'>Sửa Tham Số: </label>
+                <input type='text' placeholder='Mã tham số' name='mathamso' required/>
+                <input type='text' name='giatri' placeholder='Giá trị' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+            </form>
+            <form action='editregulation.php' method='POST'>
+                    <input type='hidden' name='action' value='deleteRegulation'>
+                    <label>Xóa Tham Số: </label>
+                    <input type='text' name='mathamso' placeholder='Mã TS' required/>
+                    <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+            </form>
+        </div>
+    </div>
     ";
 } else {
     echo "0 results";
@@ -183,99 +184,34 @@ $stt = 0;
 
 if ($result->num_rows > 0) {
     echo "
-    <table class='table table-bordered table-hover subject ml-3' style='flex:1; visibility: hidden'>
-    <thead>
-    <tr class='table-secondary'>
-        <th style='vertical-align: middle; text-align: center;'>STT</th>
-        <th style='vertical-align: middle; text-align: center;'>Mã Môn Học</th>
-        <th style='vertical-align: middle; text-align: center;'>Tên Môn Học</th>
-    </tr>
-    </thead>
-    <tbody>
-    ";
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        $stt++;
+    <div class='container' id='divTableSubject' style='display: none'>
+        <h3 class='text-center'>BẢNG MÔN HỌC</h3>
+        <table class='table table-bordered table-hover subject m-2'>
+        <thead>
+        <tr class='table-secondary'>
+            <th style='vertical-align: middle; text-align: center;'>STT</th>
+            <th style='vertical-align: middle; text-align: center;'>Mã Môn Học</th>
+            <th style='vertical-align: middle; text-align: center;'>Tên Môn Học</th>
+        </tr>
+        </thead>
+        <tbody>
+        ";
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            $stt++;
+            echo "
+        <tr>
+            <td style='vertical-align: middle; text-align: center;'>" . $stt . "</td>
+            <td style='vertical-align: middle; text-align: center;'>" . $row['mamonhoc'] . "</td>
+            <td style='vertical-align: middle; text-align: center;'>" . $row['tenmonhoc'] . "</td>
+        </tr>
+        ";
+        }
         echo "
-    <tr>
-        <td style='vertical-align: middle; text-align: center;'>" . $stt . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['mamonhoc'] . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['tenmonhoc'] . "</td>
-    </tr>
-    ";
-    }
-    echo "
-    </tbody>
-    </table>
-    ";
-} else {
-    echo "0 results";
-}
-
-
-// Table LOP
-$sql = "SELECT * FROM  LOP";
-$result = $conn->query($sql);
-$stt = 0;
-
-if ($result->num_rows > 0) {
-    echo "
-    <table class='table table-bordered table-hover class' style='margin-left:1%;flex:1; visibility: hidden'>
-    <thead>
-    <tr class='table-secondary'>
-        <th style='vertical-align: middle; text-align: center;'>STT</th>
-        <th style='vertical-align: middle; text-align: center;'>Mã Lớp</th>
-        <th style='vertical-align: middle; text-align: center;'>Tên Lớp</th>
-    </tr>
-    </thead>
-    <tbody>
-    ";
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        $stt++;
-        echo "
-    <tr>
-        <td style='vertical-align: middle; text-align: center;'>" . $stt . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['malop'] . "</td>
-        <td style='vertical-align: middle; text-align: center;'>" . $row['tenlop'] . "</td>
-    </tr>
-    ";
-    }
-    echo "
-    </tbody>
-    </table>
-    </div>
-    ";
-} else {
-    echo "0 results";
-}
-$conn->close();
-
-// Form edit regulation
-echo "
-    <div class='container-fluid mt-5' style='display: flex;'>
-        <h4 class='regulation' style='flex: 1; margin-right: 1%;visibility: hidden'>SỬA BẢNG THAM SỐ</h4>    
-        <h4 class='subject' style='flex: 1; margin-left: 1%;visibility: hidden'>SỬA BẢNG MÔN HỌC</h4>
-        <h4 class='class' style='flex: 1; margin-left: 1%;visibility: hidden'>SỬA BẢNG LỚP</h4>
-    </div>
-    <br>
-    <div class='container-fluid' style='display: flex;'>
-        <div class='editregulation regulation' style='flex: 1; margin-left: 1%; visibility: hidden'>
-        <form id='thamso' action='editregulation.php' method='POST' style='flex: 1; margin-right: 1%'>
-            <input type='hidden' name='action' value='editRegulation'>
-            <label for='mathamso' style='width: 30%'>Sửa Tham Số: </label>
-            <input type='text' placeholder='Mã tham số' style='width: 18%;' name='mathamso' required/>
-            <input type='text' name='giatri' placeholder='Giá trị' style='width: 18%;'required/>
-            <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
-        </form>
-        <form action='editregulation.php' method='POST'>
-                <input type='hidden' name='action' value='deleteRegulation'>
-                <label style='min-width: 30%'>Xóa Tham Số: </label>
-                <input type='text' name='mathamso' style='width: 18%' placeholder='Mã TS' required/>
-                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
-        </form>
-        </div>
-        <div class='editsubject subject' style='flex: 1; margin-left: 1%;visibility: hidden'>
+        </tbody>
+        </table>
+        <div class='editsubject subject m-2 mt-5'>
+            <h4 class='regulation mb-3'>SỬA BẢNG MÔN HỌC</h4>
             <form action='editregulation.php' method='POST'>
                 <input type='hidden' name='action' value='deleteSubject'>
                 <label style='min-width: 33%'>Xóa Môn Học: </label>
@@ -297,31 +233,97 @@ echo "
                 <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
             </form>
         </div>
-        <div class='editclass class' style='flex: 1; margin-left: 1%; visibility: hidden'>
-        <form action='editregulation.php' method='POST'>
-            <input type='hidden' name='action' value='deleteClass'>
-            <label style='min-width: 23%'>Xóa Lớp: </label>
-            <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
-            <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
-        </form>
-        <form action='editregulation.php' method='POST'>
-            <input type='hidden' name='action' value='increaseClass'>
-            <label style='min-width: 23%'>Thêm Lớp: </label>
-            <input type='text' name='tenlop' style='width: 18%' placeholder='Tên lớp' required/>
-            <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
-            <input type='submit' class='btn btn-primary' style='padding: 1.7px; text-align: right' value='Cập Nhật'>
-        </form>
-        <form action='editregulation.php' method='POST'>
-            <input type='hidden' name='action' value='editClass'>
-            <label style='min-width: 23%'>Sửa Tên Lớp: </label>
-            <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
-            <input type='text' name='tenlop' style='width: 18%' placeholder='Tên lớp' required/>
-            <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
-        </form>
     </div>
-    </div>
+    ";
+} else {
+    echo "0 results";
+}
 
+
+// Table LOP
+$sql = "SELECT * FROM  LOP";
+$result = $conn->query($sql);
+$stt = 0;
+
+if ($result->num_rows > 0) {
+    echo "
+    <div class='container' id='divTableClass'  style='display: none'>
+        <h3 class='text-center'>BẢNG MÔN HỌC</h3>
+        <table class='table table-bordered table-hover m-2'>
+            <thead>
+            <tr class='table-secondary'>
+                <th style='vertical-align: middle; text-align: center;'>STT</th>
+                <th style='vertical-align: middle; text-align: center;'>Mã Lớp</th>
+                <th style='vertical-align: middle; text-align: center;'>Tên Lớp</th>
+            </tr>
+            </thead>
+            <tbody>
+            ";
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $stt++;
+                echo "
+            <tr>
+                <td style='vertical-align: middle; text-align: center;'>" . $stt . "</td>
+                <td style='vertical-align: middle; text-align: center;'>" . $row['malop'] . "</td>
+                <td style='vertical-align: middle; text-align: center;'>" . $row['tenlop'] . "</td>
+            </tr>
+            ";
+            }
+            echo "
+            </tbody>
+        </table>
+        <div class='editclass m-2 mt-5'>
+            <h4 class='regulation mb-3'>SỬA BẢNG MÔN HỌC</h4>
+            <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='deleteClass'>
+                <label style='min-width: 23%'>Xóa Lớp: </label>
+                <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+            </form>
+            <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='increaseClass'>
+                <label style='min-width: 23%'>Thêm Lớp: </label>
+                <input type='text' name='tenlop' style='width: 18%' placeholder='Tên lớp' required/>
+                <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px; text-align: right' value='Cập Nhật'>
+            </form>
+            <form action='editregulation.php' method='POST'>
+                <input type='hidden' name='action' value='editClass'>
+                <label style='min-width: 23%'>Sửa Tên Lớp: </label>
+                <input type='text' name='malop' style='width: 18%' placeholder='Mã lớp' required/>
+                <input type='text' name='tenlop' style='width: 18%' placeholder='Tên lớp' required/>
+                <input type='submit' class='btn btn-primary' style='padding: 1.7px' value='Cập Nhật'>
+            </form>
+        </div>
+    </div>
+    ";
+} else {
+    echo "0 results";
+}
+$conn->close();
+
+// Form edit regulation
+echo "
+    <br>
     <footer class='text-center m-4' style='padding-top: 5%'>Copyright &copy 2021 University Of Information And Technology. </footer>
+    <script  type='text/javascript'>
+        function showTableRegulation() {
+            document.getElementById('divTableRegulation').style.display = 'block';
+            document.getElementById('divTableSubject').style.display = 'none';
+            document.getElementById('divTableClass').style.display = 'none';
+        };
+        function showTableSubject() {
+            document.getElementById('divTableRegulation').style.display = 'none';
+            document.getElementById('divTableSubject').style.display = 'block';
+            document.getElementById('divTableClass').style.display = 'none';
+        };
+        function showTableClass() {
+            document.getElementById('divTableRegulation').style.display = 'none';
+            document.getElementById('divTableSubject').style.display = 'none';
+            document.getElementById('divTableClass').style.display = 'block';
+        };
+</script>
     "
 ?>
 
