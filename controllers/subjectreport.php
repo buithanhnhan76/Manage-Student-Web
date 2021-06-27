@@ -83,7 +83,7 @@ if (isset($_POST['tenmonhoc'])) {
     echo "
     <div class='container'>
     <br>
-    <h3 class='text-center'>Báo Cáo Tổng Kết Môn" .$tenmonhoc .", " .strtoupper($mahocky) ."</h3>
+    <h3 class='text-center'>Báo Cáo Tổng Kết Môn " .$tenmonhoc .", " .strtoupper($mahocky) ."</h3>
     <br>
     <table class='table table-bordered'>
     <thead>

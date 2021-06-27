@@ -72,6 +72,7 @@ if($_SESSION['id'] != 1){
 include 'connectdb.php';
 
 $sql = "SELECT * FROM  THAMSO";
+
 $result = $conn->query($sql);
 
 // Table THAMSO
@@ -79,7 +80,7 @@ if ($result->num_rows > 0) {
     echo "
     <br>
     <div class='container-fluid' style='display:flex'>
-    <table class='table table-bordered table-hover regulation' style='flex:1;visibility:hidden;'>
+    <table class='table table-bordered table-hover regulation' style='flex:1;visibility:hidden'>
     <thead>
     <tr class='table-secondary'>
         <th style='vertical-align: middle; text-align: center;'>Mã Tham Số</th>
@@ -107,7 +108,7 @@ if ($result->num_rows > 0) {
     ";
 } else {
     echo "0 results";
-}
+};
 
 // Table MONHOC
 $sql = "SELECT * FROM  MONHOC";
