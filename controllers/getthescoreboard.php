@@ -91,8 +91,8 @@ include 'checkloginstatus.php';
     <div class="container mt-2">
         <h2 class="p-3 d-inline-block mb-2">Nhận Bảng Điểm Môn Học</h2> <br>
         <form action="getthescoreboard.php" method="POST" style="display: flex;">
-            <div class="dropdown" style="margin-right: 1%">
-                <button type="button" id="class" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <div class="dropdown ml-3" style="margin-right: 1%">
+                <button type="button" id="class" class="btn btn-light border-secondary dropdown-toggle" data-toggle="dropdown">
                     Danh Sách Các Lớp
                 </button>
                 <div class="dropdown-menu">
@@ -101,7 +101,7 @@ include 'checkloginstatus.php';
             </div>
             <br>
             <div class="dropdown" style="margin-right: 1%">
-                <button type="button" id="subject" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" id="subject" class="btn btn-light border-secondary dropdown-toggle" data-toggle="dropdown">
                     Danh Sách Môn Học
                 </button>
                 <div class="dropdown-menu">
@@ -110,7 +110,7 @@ include 'checkloginstatus.php';
             </div>
             <br>
             <div class="dropdown" style="margin-right: 1%">
-                <button type="button" id="term" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" id="term" class="btn btn-light border-secondary dropdown-toggle" data-toggle="dropdown">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">

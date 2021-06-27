@@ -29,6 +29,8 @@ if($_SESSION['id'] != 1){
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -109,7 +111,7 @@ if($_SESSION['id'] != 1){
     <div class="container mt-2">
         <h2 class="d-inline-block p-2 mb-2">Quy Định</h2>
     </div>
-    <div class="container mt-5" style="display: flex;">
+    <div class="container" style="display: flex;">
         <h4 class="text-center"><button onclick="showTableRegulation()" class="btn btn-success ml-2 mr-2">BẢNG THAM SỐ</button></h4>
         <h4 class="text-center"><button onclick="showTableSubject()" class="btn btn-success mr-2">BẢNG MÔN HỌC</button></h4>
         <h4 class="text-center"><button onclick="showTableClass()" class="btn btn-success mr-2">BẢNG LỚP</button></h4>
@@ -248,7 +250,7 @@ $stt = 0;
 if ($result->num_rows > 0) {
     echo "
     <div class='container' id='divTableClass'  style='display: none'>
-        <h3 class='text-center'>BẢNG MÔN HỌC</h3>
+        <h3 class='text-center'>BẢNG LỚP</h3>
         <table class='table table-bordered table-hover m-2'>
             <thead>
             <tr class='table-secondary'>
@@ -274,7 +276,7 @@ if ($result->num_rows > 0) {
             </tbody>
         </table>
         <div class='editclass m-2 mt-5'>
-            <h4 class='regulation mb-3'>SỬA BẢNG MÔN HỌC</h4>
+            <h4 class='regulation mb-3'>SỬA BẢNG LỚP</h4>
             <form action='editregulation.php' method='POST'>
                 <input type='hidden' name='action' value='deleteClass'>
                 <label style='min-width: 23%'>Xóa Lớp: </label>

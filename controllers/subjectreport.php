@@ -98,7 +98,7 @@ include 'checkloginstatus.php';
         <form action="subjectreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">
-                <button type="button" id="subject" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+                <button type="button" id="subject" class="btn btn-light border-secondary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Môn Học
                 </button>
                 <div class="dropdown-menu">
@@ -107,7 +107,7 @@ include 'checkloginstatus.php';
             </div>
             <br>
             <div class="dropdown">
-                <button type="button" id="term" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+                <button type="button" id="term" class="btn btn-light border-secondary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">

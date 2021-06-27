@@ -1,5 +1,6 @@
 function closeDivInform() {
-    document.getElementById("div-inform").style.display = "none";
+    document.getElementById("div-inform-success").style.display = "none";
+    document.getElementById("div-inform-danger").style.display = "none";
 };
 
 function choseClass(valueClass) {

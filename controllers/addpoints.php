@@ -94,7 +94,8 @@ if (!isset($_SESSION['loggedin'])) {
       <a href="../index.php" class="btn btn-outline-success my-2 my-sm-0">Về màn hình chính</a>
     </div>
   </nav>
-  <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
+  <div id="div-inform-success" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
+  <div id="div-inform-danger" class="m-3 p-3 alert alert-danger" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <div class="container mt-2">
     <h2 class="d-inline-block p-3 mb-2">Nhập điểm học sinh</h2>
     <form action="addpoints.php" method="POST" class="border border-success rounded p-4">
@@ -148,13 +149,13 @@ if (!isset($_SESSION['loggedin'])) {
     
     if ($conn->query($sql) === TRUE) {
       echo '<script type="text/JavaScript">
-              document.getElementById("div-inform").innerHTML += "Nhập điểm thành công";
-              document.getElementById("div-inform").style.display = "block";
+              document.getElementById("div-inform-success").innerHTML += "Nhập điểm thành công";
+              document.getElementById("div-inform-success").style.display = "block";
             </script>';
     } else {
       echo '<script type="text/JavaScript">
-              document.getElementById("div-inform").innerHTML += "Nhập điểm thất bại. Vui lòng kiểm tra lại!";
-              document.getElementById("div-inform").style.display = "block";
+              document.getElementById("div-inform-danger").innerHTML += "Nhập điểm thất bại. Vui lòng kiểm tra lại!";
+              document.getElementById("div-inform-danger").style.display = "block";
             </script>';
     }
     

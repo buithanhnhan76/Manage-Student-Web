@@ -90,10 +90,10 @@ include 'checkloginstatus.php';
         </div>
     </nav>
     <div class="container mt-2">
-        <h2 class="d-inline-block p-2 mb-2">Xuất Danh Sách Lớp</h2>
+        <h2 class="d-inline-block p-3 mb-2">Xuất Danh Sách Lớp</h2>
         <form action="showclass.php" method="POST" style="display: flex">
-            <div class="dropdown">
-                <button type="button" id="class" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+            <div class="dropdown ml-3">
+                <button type="button" id="class" class="btn btn-light border-secondary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Lớp
                 </button>
                 <div class="dropdown-menu">

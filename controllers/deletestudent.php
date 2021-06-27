@@ -32,7 +32,6 @@ if (!isset($_SESSION['loggedin'])) {
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
@@ -94,7 +93,8 @@ if (!isset($_SESSION['loggedin'])) {
       <a href="../index.php" class="btn btn-outline-success my-2 my-sm-0">Về màn hình chính</a>
     </div>
   </nav>
-  <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
+  <div id="div-inform-success" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
+  <div id="div-inform-danger" class="m-3 p-3 alert alert-danger" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
   <div class="container mt-2">
     <h2 class="d-inline-block p-3 mb-2">Xóa học sinh</h2>
     <form action="deletestudent.php" method="POST" class="border border-success rounded p-4">
@@ -125,8 +125,8 @@ if (!isset($_SESSION['loggedin'])) {
     where mahocsinh = '$mahocsinh';";
     if ($conn->query($sql) === TRUE) {
       echo '<script type="text/JavaScript">
-              document.getElementById("div-inform").innerHTML += "Xóa Học Viên Thành Công";
-              document.getElementById("div-inform").style.display = "block";
+              document.getElementById("div-inform-success").innerHTML += "Xóa Học Viên Thành Công";
+              document.getElementById("div-inform-success").style.display = "block";
             </script>';
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;

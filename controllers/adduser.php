@@ -47,6 +47,7 @@ if (!isset($_SESSION['loggedin'])) {
         </div>
         <br/>
         <button type="submit" class="btn btn-primary">Đăng kí</button>
+        <a href="../index.php" class="btn btn-secondary">Quay lại</a>
       </form>
 </div>
 <footer class="text-center m-4">Copyright &copy 2021 University Of Information And Technology. </footer>
