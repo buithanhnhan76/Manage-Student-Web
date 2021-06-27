@@ -1,5 +1,20 @@
 <?php
-include 'checkloginstatus.php';
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: ../login.html');
+	exit;
+}
+
+if($_SESSION['id'] != 1){
+    echo "
+    <script> alert('Chỉ Có Tài Khoản Admin Mới Được Thay Đổi Quy Định');
+    window.history.back(); 
+    </script>  
+";
+	exit;
+}
 ?>
 <script>
     showTableRegulation = () => {

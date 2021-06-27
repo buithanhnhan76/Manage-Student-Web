@@ -64,9 +64,15 @@
         session_start();
         if(isset($_SESSION['loggedin'])){ 
         echo "
-          <li class='nav-item'>
-            <a class='nav-link' href='controllers/logout.php'>".strtoupper($_SESSION['name']) ." <i class='fas fa-sign-out-alt'></i></a>
-          </li>
+          <li class='nav-item dropdown'>
+          <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"
+          .strtoupper($_SESSION['name']) ."
+          </a>
+          <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+            <a class='dropdown-item' href='controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i> </a>
+            <div class='dropdown-divider'></div>
+            <a class='dropdown-item' href='controllers/adduser.php'>Tạo người dùng mới</a>
+          </div>
       ";
         }
         else{
