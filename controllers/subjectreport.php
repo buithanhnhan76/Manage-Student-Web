@@ -20,17 +20,83 @@ include 'checkloginstatus.php';
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <!-- css -->
-    <link rel="stylesheet" href="../css/style.css">;
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- javascript -->
+    <script src="../js/javascript.js"></script>
 </head>
 
 <body>
-    <a href="../index.php" class="float-right border border-success m-3 p-2">Về màn hình chính</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="../index.php">Quản Lý Học Sinh <i class="fas fa-school text-secondary"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Học Sinh
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../controllers/addstudent.php">Tiếp nhận học sinh</a>
+                <a class="dropdown-item" href="../controllers/editstudent.php">Sửa thông tin học sinh</a>
+                <a class="dropdown-item" href="../controllers/deletestudent.php">Xóa học sinh</a>
+                <a class="dropdown-item" href="../controllers/addpoints.php">Nhập điểm học sinh</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link" href="../controllers/showclass.php">Danh sách lớp</a>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link" href="../controllers/getthescoreboard.php">Nhận bảng điểm môn</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Báo Cáo Tổng Kết
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../controllers/subjectreport.php">Báo cáo kết quả môn học</a>
+                <a class="dropdown-item" href="../controllers/termreport.php">Báo cáo kết quả tổng kết học kỳ</a>
+                <!-- <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link" href="../controllers/regulation.php">Quy Định</a>
+            </li>
+            <?php
+            session_start();
+            if(isset($_SESSION['loggedin'])){ 
+            echo "
+            <li class='nav-item'>
+                <a class='nav-link' href='../controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i></a>
+            </li>
+        ";
+            }
+            else{
+            echo "
+                <li class='nav-item'>
+                <a class='nav-link' href='login.html'>Đăng nhập</a>
+                </li>
+            ";
+        
+            }
+            ?>
+            <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+        </ul>
+        <a href="../index.php" class="btn btn-outline-success my-2 my-sm-0">Về màn hình chính</a>
+        </div>
+    </nav>
     <div class="container mt-5">
-        <h2 class="p-2 d-inline-block">Báo Cáo Tổng Kết Môn Học</h2> <br>
+        <h2 class="p-2 mt-4 d-inline-block">Báo Cáo Tổng Kết Môn Học</h2> <br>
         <form action="subjectreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+                <button type="button" id="subject" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Môn Học
                 </button>
                 <div class="dropdown-menu">
@@ -39,7 +105,7 @@ include 'checkloginstatus.php';
             </div>
             <br>
             <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
+                <button type="button" id="term" class="btn btn-primary dropdown-toggle" style="margin-right: 0.5rem" data-toggle="dropdown">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">
@@ -79,23 +145,23 @@ if (isset($_POST['tenmonhoc'])) {
 
     $result = $conn->query($sql);
 
+    echo "
+    <div class='container'>
+    <h3 class='text-center mt-5'>Báo Cáo Tổng Kết Môn" .$tenmonhoc. ", " .strtoupper($mahocky). "</h3>
+    <br>
+    <table class='table table-bordered table-hover'>
+    <thead>
+    <tr class='table-secondary'>
+        <th>Stt</th>
+        <th>Lớp</th>
+        <th>Sỉ số</th>
+        <th>Số lượng đạt</th>
+        <th>Tỉ lệ %</th>
+    </tr>
+    </thead>
+    <tbody>
+    ";
     if ($result->num_rows > 0) {
-        echo "
-        <div class='container'>
-        <h3 class='text-center'>Báo Cáo Tổng Kết Môn Học</h3>
-        <br>
-        <table class='table table-bordered'>
-        <thead>
-        <tr>
-            <th>Stt</th>
-            <th>Lớp</th>
-            <th>Sỉ số</th>
-            <th>Số lượng đạt</th>
-            <th>Tỉ lệ %</th>
-        </tr>
-        </thead>
-        <tbody>
-        ";
         // output data of each row
         $stt = 0;
         while ($row = $result->fetch_assoc()) {
@@ -108,16 +174,18 @@ if (isset($_POST['tenmonhoc'])) {
             echo "<td>" . $row['Tỉ lệ %'] . "</td>";
             echo "</tr>";
         }
-        echo "
-    </tbody>
-    </table>
-    </div>
-    <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
-    <br>
-    ";
     } else {
-        echo "0 results";
+        echo "<tr>";
+        echo "<td colspan='6' class='text-center'>Danh sách trống</td>";
+        echo "</tr>";
     }
+    echo "
+        </tbody>
+        </table>
+        </div>
+        <footer class='text-center'>Copyright &copy 2021 University Of Information And Technology. </footer>
+        <br>
+        ";
     $conn->close();
 }
 ?>

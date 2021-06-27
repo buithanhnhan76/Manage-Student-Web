@@ -22,15 +22,79 @@ if (!isset($_SESSION['loggedin'])) {
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/c9801e10cc.js" crossorigin="anonymous"></script>
     <!-- css -->
-    <link rel="stylesheet" href="../css/style.css">;
+    <link rel="stylesheet" href="../css/style.css">
     <!-- javascript -->
     <script src="../js/javascript.js"></script>
 </head>
 <body>
-  <div id="div-inform" class="m-3 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
-  <a href="../index.php" class="float-right d-inline-block border border-success rounded p-3 m-3">Về màn hình chính</a>
-  <div class="container mt-5">
-    <h2 class="d-inline-block p-3 mb-4">Tiếp nhận học sinh</h2>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="../index.php">Quản Lý Học Sinh <i class="fas fa-school text-secondary"></i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Học Sinh
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../controllers/addstudent.php">Tiếp nhận học sinh</a>
+              <a class="dropdown-item" href="../controllers/editstudent.php">Sửa thông tin học sinh</a>
+              <a class="dropdown-item" href="../controllers/deletestudent.php">Xóa học sinh</a>
+              <a class="dropdown-item" href="../controllers/addpoints.php">Nhập điểm học sinh</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../controllers/showclass.php">Danh sách lớp</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../controllers/getthescoreboard.php">Nhận bảng điểm môn</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Báo Cáo Tổng Kết
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../controllers/subjectreport.php">Báo cáo kết quả môn học</a>
+              <a class="dropdown-item" href="../controllers/termreport.php">Báo cáo kết quả tổng kết học kỳ</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../controllers/regulation.php">Quy Định</a>
+          </li>
+          <?php
+          session_start();
+          if(isset($_SESSION['loggedin'])){ 
+          echo "
+            <li class='nav-item'>
+              <a class='nav-link' href='../controllers/logout.php'>Đăng xuất <i class='fas fa-sign-out-alt'></i></a>
+            </li>
+        ";
+          }
+          else{
+            echo "
+              <li class='nav-item'>
+                <a class='nav-link' href='login.html'>Đăng nhập</a>
+              </li>
+          ";
+        
+          }
+          ?>
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <a href="../index.php" class="btn btn-outline-success my-2 my-sm-0">Về màn hình chính</a>
+      </div>
+  </nav>
+  <div id="div-inform" class="mt-1 ml-5 mr-5 p-3 alert alert-success" style="display: none"><i class="fas fa-times" style="line-height: 2; float: right" onclick="closeDivInform()"></i></div>
+  <div class="container">
+    <h2 class="d-inline-block p-4 mt-4">Tiếp nhận học sinh</h2>
     <form action="addstudent.php" method="POST" class="border border-success rounded p-4">
         <div class="form-group">
           <label for="hoten">Họ và tên:</label>
@@ -64,7 +128,7 @@ if (!isset($_SESSION['loggedin'])) {
         <br/>
         <button type="submit" class="btn btn-primary">Đăng kí</button>
       </form>
-</div>
+  </div>
 <footer class="text-center m-4">Copyright &copy 2021 University Of Information And Technology. </footer>
 </body>
 </html>
@@ -87,7 +151,7 @@ if (!isset($_SESSION['loggedin'])) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $ageMax = $row["giatri"];
-            echo $ageMax;
+            // echo $ageMax;
           }
     }
 
@@ -97,7 +161,7 @@ if (!isset($_SESSION['loggedin'])) {
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $ageMin = $row["giatri"];
-            echo $ageMin;
+            // echo $ageMin;
           }
     }
 
@@ -122,7 +186,10 @@ if (!isset($_SESSION['loggedin'])) {
               document.getElementById("div-inform").style.display = "block";
             </script>';
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
+      echo '<script type="text/JavaScript">
+              document.getElementById("div-inform").innerHTML += "Tiếp Nhận Học Viên Thất Bại";
+              document.getElementById("div-inform").style.display = "block";
+            </script>';
     }
     
     $conn->close();
