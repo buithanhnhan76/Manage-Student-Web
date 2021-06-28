@@ -1,6 +1,4 @@
-<?php 
-    include 'checkloginstatus.php';
-?>
+
 <html>
 <head>
     <!-- bootstrap -->
