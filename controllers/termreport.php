@@ -94,11 +94,11 @@ include 'checkloginstatus.php';
         </div>
     </nav>
     <div class="container mt-2">
-        <h3 class="d-inline-block p-3 mb-2">Báo Cáo Tổng Kết Học Kỳ</h3>
+        <h3 class="d-inline-block p-2 mb-2">Báo Cáo Tổng Kết Học Kỳ</h3>
         <form action="termreport.php" method="POST" style="display: flex">
             <br>
-            <div class="dropdown ml-3">
-                <button type="button" id="term" class="btn btn-light border-secondary dropdown-toggle" data-toggle="dropdown" style="margin-right: 0.5rem">
+            <div class="dropdown">
+                <button type="button" id="term" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-right: 0.5rem">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">
@@ -119,22 +119,40 @@ if (isset($_POST['mahocky'])) {
     $mahocky = $_POST['mahocky'];
 
     // if user has not enter the point of student, then the computer wil count it as not fail
-    $sql="select l.malop, l.siso, COUNT(hs.mahocsinh) as 'Số lượng đạt', (COUNT(hs.mahocsinh)/l.siso)*100 as 'Tỉ lệ %'
-    from LOP l, HOCSINH hs, PHIEUDIEM pd, HOCKY hk
+    // $sql="select l.malop, l.siso, COUNT(hs.mahocsinh) as 'Số lượng đạt', (COUNT(hs.mahocsinh)/l.siso)*100 as 'Tỉ lệ %'
+    // from LOP l, HOCSINH hs, PHIEUDIEM pd, HOCKY hk
+    // where l.malop = hs.malop
+    // and hk.mahocky = pd.mahocky
+    // and pd.mahocsinh = hs.mahocsinh
+    // and hk.mahocky = '$mahocky'
+    // and hs.mahocsinh not in (
+    // select distinct hs.mahocsinh
+    // where hk.mahocky = '$mahocky' and
+    //  (pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8 < (
+    //     select giatri
+    //     from THAMSO
+    //     where THAMSO.mathamso = 'ĐĐM'
+    // )
+    // )
+    // group by l.malop;
+    // ";
+
+    $sql = "select l.malop, l.siso, COUNT(hs.mahocsinh) as 'Số lượng đạt', (COUNT(hs.mahocsinh)/l.siso)*100 as 'Tỉ lệ %'
+    from LOP l, HOCSINH hs
     where l.malop = hs.malop
-    and hk.mahocky = pd.mahocky
-    and pd.mahocsinh = hs.mahocsinh
-    and hk.mahocky = '$mahocky'
     and hs.mahocsinh not in (
     select distinct hs.mahocsinh
-    where hk.mahocky = '$mahocky'
+    from PHIEUDIEM pd, HOCKY hk
+    where pd.mahocsinh = hs.mahocsinh
+    and pd.mahocky = hk.mahocky
+    and hk.mahocky = '$mahocky'
     and (pd.diem15p + pd.diem1t * 2 + pd.diemcuoiky * 5)/8 < (
         select giatri
         from THAMSO
         where THAMSO.mathamso = 'ĐĐM'
     )
     )
-    group by l.malop;
+    group by l.malop
     ";
 
 
