@@ -61,7 +61,6 @@
             <a class="nav-link" href="../controllers/regulation.php">Quy Định</a>
             </li>
             <?php
-            session_start();
             if(isset($_SESSION['loggedin'])){ 
             echo "
             <li class='nav-item dropdown'>
