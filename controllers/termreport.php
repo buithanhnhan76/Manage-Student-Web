@@ -98,7 +98,7 @@ include 'checkloginstatus.php';
         <form action="termreport.php" method="POST" style="display: flex">
             <br>
             <div class="dropdown">
-                <button type="button" id="term" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-right: 0.5rem">
+                <button type="button" id="term" class="btn btn-light border border-secondary dropdown-toggle" data-toggle="dropdown" style="margin-right: 0.5rem">
                     Danh Sách Học Kỳ
                 </button>
                 <div class="dropdown-menu">
